@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
-		AF56FEFB1DB7F5AB00B7FE25 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* FirstViewController.swift */; };
+		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
 		AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */; };
 		AF56FF001DB7F5AC00B7FE25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */; };
 		AF56FF021DB7F5AC00B7FE25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */; };
 		AF56FF051DB7F5AC00B7FE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */; };
+		AF8E370B1DD71D880086431F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8E370A1DD71D880086431F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF56FEFA1DB7F5AB00B7FE25 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AF56FEFF1DB7F5AC00B7FE25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF56FF041DB7F5AC00B7FE25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF56FF061DB7F5AC00B7FE25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF8E370A1DD71D880086431F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8E370B1DD71D880086431F /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				AF56FEF71DB7F5AB00B7FE25 /* GeoGeo */,
 				AF56FEF61DB7F5AB00B7FE25 /* Products */,
+				AF8E37091DD71D880086431F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +60,31 @@
 		AF56FEF71DB7F5AB00B7FE25 /* GeoGeo */ = {
 			isa = PBXGroup;
 			children = (
+				AF56FF0C1DB7F61500B7FE25 /* ViewControllers */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
-				AF56FEFA1DB7F5AB00B7FE25 /* FirstViewController.swift */,
-				AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */,
 				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
 				AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */,
 				AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */,
 				AF56FF061DB7F5AC00B7FE25 /* Info.plist */,
 			);
 			path = GeoGeo;
+			sourceTree = "<group>";
+		};
+		AF56FF0C1DB7F61500B7FE25 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */,
+				AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AF8E37091DD71D880086431F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF8E370A1DD71D880086431F /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +121,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = B5SWW93MKD;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -142,7 +167,7 @@
 			files = (
 				AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
-				AF56FEFB1DB7F5AB00B7FE25 /* FirstViewController.swift in Sources */,
+				AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +331,7 @@
 				AF56FF0B1DB7F5AC00B7FE25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
