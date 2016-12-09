@@ -9,12 +9,24 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class CustomPointAnntotation: MKPointAnnotation {
     
+}
+class MapViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     var showMore = false;
+    var detailMod = false;
     @IBOutlet var MainView: UIView!
     @IBOutlet weak var MoreView: UIView!
+    @IBOutlet weak var customC: NSLayoutConstraint!
+    @IBOutlet weak var MVRight: NSLayoutConstraint!
+    @IBOutlet weak var MVLeft: NSLayoutConstraint!
+    @IBOutlet weak var MVUp: NSLayoutConstraint!
+    @IBOutlet weak var UpperSwitcher: UISegmentedControl!
+    @IBOutlet weak var buttonHideDetailMode: UIButton!
+    @IBOutlet weak var UpSwitcher: NSLayoutConstraint!
+    @IBOutlet weak var UpButtonHide: NSLayoutConstraint!
+    @IBOutlet weak var UpperButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,41 +50,66 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func HideView(_ sender: Any) {
-        ShowMoreAction();
+        ShowMoreAction()
+    }
+    
+    
+    @IBAction func DetailMod(_ sender: Any) {
+        detailMod = true
+        UIView.animate(withDuration: Double(0.333), animations: {
+            self.UpperSwitcher.alpha = 1
+            // equals disable. for test use 0.2
+            self.buttonHideDetailMode.alpha = 1
+            // equals disable. for test use 0.2
+        })
+        ShowMoreAction()
+    }
+    
+    @IBAction func HideDetailMod(_ sender: Any) {
+        detailMod = false
+        UIView.animate(withDuration: Double(0.333), animations: {
+            self.UpperSwitcher.alpha = 0
+            // equals disable. for test use 0.2
+            self.buttonHideDetailMode.alpha = 0
+            // equals disable. for test use 0.2
+        })
     }
     
     func ShowMoreAction () {
-        for constraint in MainView.constraints {
-            if (constraint.identifier == "bottonCon"){
-                UIView.animate(withDuration: Double(0.3), animations: {
-                    if self.showMore {
-                        constraint.constant = -315
-                        self.map.alpha = 1
-                    } else {
-                        constraint.constant = 0
-                        self.map.alpha = 0.5
-                    }
-                    self.view.layoutIfNeeded()
-                })
+        UIView.animate(withDuration: Double(0.333), animations: {
+            if self.showMore {
+                
+                self.UpSwitcher.constant = 25;
+                self.UpButtonHide.constant = 25;
+                
+                self.customC.constant = -260
+                self.map.alpha = 1
+                self.MVRight.constant = 10
+                self.MVLeft.constant = 10
+                self.MVUp.constant = -40
+            } else {
+                self.UpSwitcher.constant = -50;
+                self.UpButtonHide.constant = -50;
+                self.customC.constant = 0
+                self.map.alpha = 0.5
+                self.MVRight.constant = 0
+                self.MVLeft.constant = 0
+                self.MVUp.constant = 0
             }
-        }
-        self.map.isZoomEnabled = !self.map.isZoomEnabled
-        self.map.isScrollEnabled = !self.map.isScrollEnabled
+            self.view.layoutIfNeeded()
+        })
+        map.isZoomEnabled = !map.isZoomEnabled
+        map.isScrollEnabled = !map.isScrollEnabled
         showMore = !showMore
     }
     
     func addSomeUsers() {
-        
-//        let annotationView = MKAnnotationView()
-//        let detailButton = UIButton.init(type: UIButtonType.detailDisclosure) as UIButton
-//        annotationView.rightCalloutAccessoryView = detailButton
-
         let an : MKPointAnnotation = MKPointAnnotation.init()
-        an.title = "ivan.trofimov"
+        let name = NSLocalizedString("ivan.trofimov", comment: "it's my name")
+        an.title = name
         an.subtitle = "kokoko?"
         an.coordinate.latitude = 59.95672917
         an.coordinate.longitude = 30.31162262
-        
         map.addAnnotation(an)
         map.region = .init(center: an.coordinate, span: .init(latitudeDelta: 1, longitudeDelta: 1))
     }

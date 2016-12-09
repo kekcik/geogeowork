@@ -14,6 +14,10 @@
 		AF56FF021DB7F5AC00B7FE25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */; };
 		AF56FF051DB7F5AC00B7FE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */; };
 		AF8E370B1DD71D880086431F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8E370A1DD71D880086431F /* MapKit.framework */; };
+		AFF282B11DDC776600E9511D /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF282B01DDC776600E9511D /* WelcomeVC.swift */; };
+		AFF282B31DDC777300E9511D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF282B21DDC777300E9511D /* LoginVC.swift */; };
+		AFF282B51DDC777E00E9511D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF282B41DDC777E00E9511D /* RegisterVC.swift */; };
+		AFF282B71DDC7FCE00E9511D /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF282B61DDC7FCE00E9511D /* SettingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		AF56FF041DB7F5AC00B7FE25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF56FF061DB7F5AC00B7FE25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF8E370A1DD71D880086431F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AFF282B01DDC776600E9511D /* WelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		AFF282B21DDC777300E9511D /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		AFF282B41DDC777E00E9511D /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		AFF282B61DDC7FCE00E9511D /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,9 @@
 		AF56FEF71DB7F5AB00B7FE25 /* GeoGeo */ = {
 			isa = PBXGroup;
 			children = (
+				AFF282AF1DD8DA2400E9511D /* Models */,
+				AFF282AE1DD8DA1200E9511D /* ApiContollers */,
+				AFF282AD1DD8DA0100E9511D /* Helpers */,
 				AF56FF0C1DB7F61500B7FE25 /* ViewControllers */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
 				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
@@ -75,6 +86,10 @@
 			children = (
 				AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */,
 				AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */,
+				AFF282B01DDC776600E9511D /* WelcomeVC.swift */,
+				AFF282B21DDC777300E9511D /* LoginVC.swift */,
+				AFF282B41DDC777E00E9511D /* RegisterVC.swift */,
+				AFF282B61DDC7FCE00E9511D /* SettingVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -85,6 +100,27 @@
 				AF8E370A1DD71D880086431F /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFF282AD1DD8DA0100E9511D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		AFF282AE1DD8DA1200E9511D /* ApiContollers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ApiContollers;
+			sourceTree = "<group>";
+		};
+		AFF282AF1DD8DA2400E9511D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,7 +150,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Иван Трофимов";
 				TargetAttributes = {
 					AF56FEF41DB7F5AB00B7FE25 = {
@@ -166,8 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */,
+				AFF282B71DDC7FCE00E9511D /* SettingVC.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
 				AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */,
+				AFF282B51DDC777E00E9511D /* RegisterVC.swift in Sources */,
+				AFF282B11DDC776600E9511D /* WelcomeVC.swift in Sources */,
+				AFF282B31DDC777300E9511D /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +251,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -261,6 +302,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
