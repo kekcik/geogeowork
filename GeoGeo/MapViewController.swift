@@ -8,14 +8,15 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class CustomPointAnntotation: MKPointAnnotation {
     
 }
-class MapViewController: UIViewController {
+
+
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     @IBOutlet weak var map: MKMapView!
-    var showMore = false;
-    var detailMod = false;
     @IBOutlet var MainView: UIView!
     @IBOutlet weak var MoreView: UIView!
     @IBOutlet weak var customC: NSLayoutConstraint!
@@ -27,20 +28,36 @@ class MapViewController: UIViewController {
     @IBOutlet weak var UpSwitcher: NSLayoutConstraint!
     @IBOutlet weak var UpButtonHide: NSLayoutConstraint!
     @IBOutlet weak var UpperButton: UIButton!
+    @IBOutlet weak var Button: UIButton!
+    
+    
+    var showMore = false
+    var detailMod = false
+    private var locationManager: CLLocationManager = CLLocationManager()
+    //private var geocoder = CLGeocoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerMap()
+        registerLocationManager()
         addSomeUsers()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBOutlet weak var Button: UIButton!
     
+    
+    private func registerLocationManager(){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    private func registerMap(){
+        self.map.delegate = self
+        map.showsUserLocation = true
+    }
+
+
     @IBAction func SwipeShowMore(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.up && !showMore {
             ShowMoreAction()
@@ -103,6 +120,22 @@ class MapViewController: UIViewController {
         showMore = !showMore
     }
     
+    
+    internal func locationManager(_ manager: CLLocationManager,
+                                  didFailWithError error: Error) {
+        print("error: ", error)
+    }
+    
+    internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let span = MKCoordinateSpanMake(100, 100)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            map.setRegion(region, animated: true)
+            
+        }
+        locationManager.stopUpdatingLocation()
+    }
+    
     func addSomeUsers() {
         let an : MKPointAnnotation = MKPointAnnotation.init()
         let name = NSLocalizedString("ivan.trofimov", comment: "it's my name")
@@ -111,7 +144,27 @@ class MapViewController: UIViewController {
         an.coordinate.latitude = 59.95672917
         an.coordinate.longitude = 30.31162262
         map.addAnnotation(an)
-        map.region = .init(center: an.coordinate, span: .init(latitudeDelta: 1, longitudeDelta: 1))
     }
+    
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        let view = MKPinAnnotationView()
+//        view.annotation = annotation
+//        return view
+//    }
+    
+    
+    internal func mapView(_ mapView: MKMapView,
+                          didSelect view: MKAnnotationView){
+        if view.annotation is MKUserLocation{
+            return
+        }
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+    }
+    
+    func setRegionAndSpan(){
+        map.showAnnotations(map.annotations, animated: true)
+    }
+
+
 }
 
