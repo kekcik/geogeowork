@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BA56E051DFC5F4800B0F9D8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */; };
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
 		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
 		AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				AF56FF0C1DB7F61500B7FE25 /* ViewControllers */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
 				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
+				7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */,
 				AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */,
 				AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */,
 				AF56FF061DB7F5AC00B7FE25 /* Info.plist */,
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BA56E051DFC5F4800B0F9D8 /* TabBarViewController.swift in Sources */,
 				AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */,
 				AFF282B71DDC7FCE00E9511D /* SettingVC.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
