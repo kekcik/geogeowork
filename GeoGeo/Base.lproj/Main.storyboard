@@ -361,7 +361,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="7qW-Bm-0li" eventType="touchUpInside" id="zeh-Ce-XCS"/>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="RLV-Bo-2We"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaR-ER-Umu">
@@ -417,6 +416,7 @@
                     <connections>
                         <outlet property="loginTextField" destination="CM5-fo-pvL" id="lVi-ru-Kmu"/>
                         <outlet property="passwordTextField" destination="U7x-5R-5rk" id="REc-xj-72r"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="fromLoginSegue" id="RJX-xL-kct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEV-Nt-UFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -447,7 +447,6 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButtonPressed:" destination="eFB-Jf-GJn" eventType="touchUpInside" id="aHF-6E-P3G"/>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="VM1-GR-4LY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Abroad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnC-7Q-Oea">
@@ -532,6 +531,7 @@
                         <outlet property="passwordTextField" destination="z18-TN-pYA" id="24H-UX-XFZ"/>
                         <outlet property="phoneTextField" destination="BTt-iS-a70" id="Xks-7O-TPp"/>
                         <outlet property="repeatPasswordTextField" destination="K3z-gs-mU2" id="nQ6-wp-yQc"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="fromRegisterSegue" id="bgM-Dv-yjb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c48-Kb-Nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,7 +562,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7qW-Bm-0li" kind="show" id="ns7-dB-fnZ"/>
+                                    <segue destination="7qW-Bm-0li" kind="show" identifier="fromLoginSegue" id="ns7-dB-fnZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YK-Ba-1bE">
@@ -577,7 +577,7 @@
                                     <color key="titleColor" red="0.99927775770000005" green="1" blue="0.97524114989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eFB-Jf-GJn" kind="show" id="Zio-0T-m4V"/>
+                                    <segue destination="eFB-Jf-GJn" kind="show" identifier="" id="Zio-0T-m4V"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temporary" translatesAutoresizingMaskIntoConstraints="NO" id="yqJ-rO-WAT">
@@ -659,6 +659,6 @@
         <image name="temporary" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RLV-Bo-2We"/>
+        <segue reference="bgM-Dv-yjb"/>
     </inferredMetricsTieBreakers>
 </document>

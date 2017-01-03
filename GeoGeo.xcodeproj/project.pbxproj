@@ -12,6 +12,7 @@
 		8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA223481E1BBB130055E39A /* ApiManager.swift */; };
 		8AA2234B1E1BBE3C0055E39A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */; };
 		8AA2234D1E1BBE3E0055E39A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */; };
+		8AA223501E1C12610055E39A /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA2234F1E1C12610055E39A /* UserClass.swift */; };
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
 		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
 		AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */; };
@@ -30,6 +31,7 @@
 		8AA223481E1BBB130055E39A /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		8AA2234F1E1C12610055E39A /* UserClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
 		9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoGeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo.debug.xcconfig"; sourceTree = "<group>"; };
 		ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				8AA223481E1BBB130055E39A /* ApiManager.swift */,
+				8AA2234F1E1C12610055E39A /* UserClass.swift */,
 			);
 			name = "Initial classes";
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */,
 				AFF282B71DDC7FCE00E9511D /* SettingVC.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
+				8AA223501E1C12610055E39A /* UserClass.swift in Sources */,
 				AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */,
 				AFF282B51DDC777E00E9511D /* RegisterVC.swift in Sources */,
 				AFF282B11DDC776600E9511D /* WelcomeVC.swift in Sources */,
