@@ -10,6 +10,8 @@
 		5CA2196A93FA1C47450294E6 /* Pods_GeoGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */; };
 		7BA56E051DFC5F4800B0F9D8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */; };
 		8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA223481E1BBB130055E39A /* ApiManager.swift */; };
+		8AA2234B1E1BBE3C0055E39A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */; };
+		8AA2234D1E1BBE3E0055E39A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */; };
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
 		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
 		AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8AA223481E1BBB130055E39A /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoGeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo.debug.xcconfig"; sourceTree = "<group>"; };
 		ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA2234D1E1BBE3E0055E39A /* SwiftyJSON.framework in Frameworks */,
+				8AA2234B1E1BBE3C0055E39A /* Alamofire.framework in Frameworks */,
 				AF8E370B1DD71D880086431F /* MapKit.framework in Frameworks */,
 				5CA2196A93FA1C47450294E6 /* Pods_GeoGeo.framework in Frameworks */,
 			);
@@ -64,6 +70,14 @@
 				F26183E6D4E8ED99801827CD /* Pods-GeoGeo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8AA2234E1E1BBEA70055E39A /* Initial classes */ = {
+			isa = PBXGroup;
+			children = (
+				8AA223481E1BBB130055E39A /* ApiManager.swift */,
+			);
+			name = "Initial classes";
 			sourceTree = "<group>";
 		};
 		AF56FEEC1DB7F5AB00B7FE25 = {
@@ -91,9 +105,8 @@
 				AFF282AE1DD8DA1200E9511D /* ApiContollers */,
 				AFF282AD1DD8DA0100E9511D /* Helpers */,
 				AF56FF0C1DB7F61500B7FE25 /* ViewControllers */,
+				8AA2234E1E1BBEA70055E39A /* Initial classes */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
-				8AA223481E1BBB130055E39A /* ApiManager.swift */,
-				7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */,
 				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
 				AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */,
 				AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */,
@@ -111,6 +124,7 @@
 				AFF282B21DDC777300E9511D /* LoginVC.swift */,
 				AFF282B41DDC777E00E9511D /* RegisterVC.swift */,
 				AFF282B61DDC7FCE00E9511D /* SettingVC.swift */,
+				7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -118,6 +132,8 @@
 		AF8E37091DD71D880086431F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */,
+				8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */,
 				AF8E370A1DD71D880086431F /* MapKit.framework */,
 				ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */,
 			);

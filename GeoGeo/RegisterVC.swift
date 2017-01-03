@@ -9,8 +9,16 @@
 import UIKit
 
 class RegisterVC: UIViewController {
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var repeatPasswordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func registerButtonPressed(_ sender: Any) {
     }
 }
 
