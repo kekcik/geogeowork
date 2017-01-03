@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CA2196A93FA1C47450294E6 /* Pods_GeoGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */; };
 		7BA56E051DFC5F4800B0F9D8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */; };
+		8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA223481E1BBB130055E39A /* ApiManager.swift */; };
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
 		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
 		AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */; };
@@ -23,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		8AA223481E1BBB130055E39A /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoGeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo.debug.xcconfig"; sourceTree = "<group>"; };
+		ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +41,7 @@
 		AFF282B21DDC777300E9511D /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AFF282B41DDC777E00E9511D /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		AFF282B61DDC7FCE00E9511D /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		F26183E6D4E8ED99801827CD /* Pods-GeoGeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoGeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,18 +50,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF8E370B1DD71D880086431F /* MapKit.framework in Frameworks */,
+				5CA2196A93FA1C47450294E6 /* Pods_GeoGeo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F6731C2232FF1AED4342B73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */,
+				F26183E6D4E8ED99801827CD /* Pods-GeoGeo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AF56FEEC1DB7F5AB00B7FE25 = {
 			isa = PBXGroup;
 			children = (
 				AF56FEF71DB7F5AB00B7FE25 /* GeoGeo */,
 				AF56FEF61DB7F5AB00B7FE25 /* Products */,
 				AF8E37091DD71D880086431F /* Frameworks */,
+				7F6731C2232FF1AED4342B73 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,10 +92,11 @@
 				AFF282AD1DD8DA0100E9511D /* Helpers */,
 				AF56FF0C1DB7F61500B7FE25 /* ViewControllers */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
-				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
+				8AA223481E1BBB130055E39A /* ApiManager.swift */,
 				7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */,
-				AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */,
+				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
 				AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */,
+				AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */,
 				AF56FF061DB7F5AC00B7FE25 /* Info.plist */,
 			);
 			path = GeoGeo;
@@ -101,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				AF8E370A1DD71D880086431F /* MapKit.framework */,
+				ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -133,9 +152,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF56FF091DB7F5AC00B7FE25 /* Build configuration list for PBXNativeTarget "GeoGeo" */;
 			buildPhases = (
+				AB2BC6347B9B8D7D4902DD89 /* [CP] Check Pods Manifest.lock */,
 				AF56FEF11DB7F5AB00B7FE25 /* Sources */,
 				AF56FEF21DB7F5AB00B7FE25 /* Frameworks */,
 				AF56FEF31DB7F5AB00B7FE25 /* Resources */,
+				FE36C80E62A97A00F3626B30 /* [CP] Embed Pods Frameworks */,
+				83FAA5D7FA91F5289350B6E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,12 +221,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		83FAA5D7FA91F5289350B6E5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB2BC6347B9B8D7D4902DD89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FE36C80E62A97A00F3626B30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AF56FEF11DB7F5AB00B7FE25 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7BA56E051DFC5F4800B0F9D8 /* TabBarViewController.swift in Sources */,
+				8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */,
 				AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */,
 				AFF282B71DDC7FCE00E9511D /* SettingVC.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
@@ -334,6 +405,7 @@
 		};
 		AF56FF0A1DB7F5AC00B7FE25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KH2KDZEEE3;
@@ -347,6 +419,7 @@
 		};
 		AF56FF0B1DB7F5AC00B7FE25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F26183E6D4E8ED99801827CD /* Pods-GeoGeo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KH2KDZEEE3;
