@@ -197,12 +197,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Иван Трофимов";
 				TargetAttributes = {
 					AF56FEF41DB7F5AB00B7FE25 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = KH2KDZEEE3;
+						DevelopmentTeam = B5SWW93MKD;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -434,8 +434,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KH2KDZEEE3;
+				DEVELOPMENT_TEAM = B5SWW93MKD;
 				INFOPLIST_FILE = GeoGeo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trofimov.GeoGeo;
@@ -448,8 +449,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F26183E6D4E8ED99801827CD /* Pods-GeoGeo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KH2KDZEEE3;
+				DEVELOPMENT_TEAM = B5SWW93MKD;
 				INFOPLIST_FILE = GeoGeo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trofimov.GeoGeo;
