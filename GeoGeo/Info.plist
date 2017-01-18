@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location for showing your friends on map</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location for showing your friends on map</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

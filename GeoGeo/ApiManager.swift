@@ -137,6 +137,36 @@ final class ApiManager{
     }
 
     
+    static func setLocationPoint(token: String, location: LocationClass, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "location.set_location"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "lat": location.lat!,
+                            "lon": location.lon!,
+                            "accuracy": location.accuracy!]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
+    }
     
+    static func getLastLocations(token: String, user_id: String, callback: @escaping (_ resultCode: String, _ locations: [LocationClass]) -> Void){
+        let path = pathToServer + "location.get_location"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    print(response) // <- temporary
+                            })
+
+    }
     
 }
