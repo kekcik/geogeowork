@@ -290,7 +290,7 @@
             </objects>
             <point key="canvasLocation" x="-1204" y="216"/>
         </scene>
-        <!--Setting-->
+        <!--Settings-->
         <scene sceneID="qdP-Wg-87M">
             <objects>
                 <viewController id="0sk-IZ-AXh" sceneMemberID="viewController">
@@ -331,7 +331,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" id="1Bf-23-O9E"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="1Bf-23-O9E"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="py8-AK-YxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

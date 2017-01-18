@@ -29,6 +29,7 @@ final class ApiManager{
     
     static let pathToServer = "http://109.120.159.112:4567/"
     static var myToken = ""
+    static var myUserId = ""
     
     static func register(phone: String, name: String, password: String, callback: @escaping (_ resultCode: String) -> Void){
         let path = pathToServer + "user.register"
@@ -58,6 +59,7 @@ final class ApiManager{
                                             }
                                             let json = JSON(response.result.value!)
                                             ApiManager.myToken = json["token"].stringValue
+                                            ApiManager.myUserId = json["id"].stringValue
                                             callback(json["result_code"].stringValue, json["id"].stringValue, json["token"].stringValue)
                                        })
     }
@@ -166,7 +168,16 @@ final class ApiManager{
                                     guard response.result.isSuccess else{
                                         return
                                     }
-                                    print(response) // <- temporary
+                                    let json = JSON(response.result.value!)
+                                    let resultCode = json["result_code"].stringValue
+                                    var lastLocations = [LocationClass]()
+                                    for location in json["locations"].arrayValue{
+                                        lastLocations.append(LocationClass(lat: location["lat"].stringValue,
+                                                                           lon: location["lon"].stringValue,
+                                                                           accuracy: location["accuracy"].stringValue,
+                                                                           createdAt: location["created_at"].stringValue))
+                                    }
+                                    callback(resultCode, lastLocations)
                             })
 
     }
