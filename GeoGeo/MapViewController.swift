@@ -31,9 +31,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var Button: UIButton!
     
     
-    var showMore = false
-    var detailMod = false
+    private var showMore = false
+    private var detailMod = false
     private var locationManager: CLLocationManager = CLLocationManager()
+    fileprivate var lastLocations = [LocationClass]()
+    private var isFirstEnter: Bool = true
     //private var geocoder = CLGeocoder()
     
     override func viewDidLoad() {
@@ -47,7 +49,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private func registerLocationManager(){
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
     }
@@ -127,14 +129,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            let span = MKCoordinateSpanMake(100, 100)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            map.setRegion(region, animated: true)
-            
+        guard let mostRecentLocation = locations.last else {
+            return
         }
-        locationManager.stopUpdatingLocation()
+        if isFirstEnter{
+            isFirstEnter = false
+            firstLocation(location: mostRecentLocation)
+        }
+        lastLocations.append(LocationClass(lat: "\(mostRecentLocation.coordinate.latitude)",
+                                   lon: "\(mostRecentLocation.coordinate.longitude)",
+                                   accuracy: "3.0", createdAt: nil))
+        ApiManager.setLocationPoint(token: ApiManager.myToken, location: lastLocations.last!,
+                                    callback: {resultCode in
+                                        if resultCode != "0"{
+                                            self.showAlert(title: "Error", message: "Something went wrong with sending data")
+                                        }})
     }
+    
+    private func firstLocation(location: CLLocation){
+        let span = MKCoordinateSpanMake(100, 100)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        map.setRegion(region, animated: true)
+    }
+
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     func addSomeUsers() {
         let an : MKPointAnnotation = MKPointAnnotation.init()

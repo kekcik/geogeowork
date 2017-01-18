@@ -48,6 +48,13 @@ class RegisterVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameTextField.resignFirstResponder()
+        phoneTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        repeatPasswordTextField.resignFirstResponder()
+    }
+    
 }
 
 extension RegisterVC{

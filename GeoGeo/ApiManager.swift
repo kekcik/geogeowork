@@ -28,6 +28,7 @@ import SwiftyJSON
 final class ApiManager{
     
     static let pathToServer = "http://109.120.159.112:4567/"
+    static var myToken = ""
     
     static func register(phone: String, name: String, password: String, callback: @escaping (_ resultCode: String) -> Void){
         let path = pathToServer + "user.register"
@@ -56,6 +57,7 @@ final class ApiManager{
                                                 return
                                             }
                                             let json = JSON(response.result.value!)
+                                            ApiManager.myToken = json["token"].stringValue
                                             callback(json["result_code"].stringValue, json["id"].stringValue, json["token"].stringValue)
                                        })
     }

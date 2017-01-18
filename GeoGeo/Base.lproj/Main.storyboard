@@ -531,7 +531,7 @@
                         <outlet property="passwordTextField" destination="z18-TN-pYA" id="24H-UX-XFZ"/>
                         <outlet property="phoneTextField" destination="BTt-iS-a70" id="Xks-7O-TPp"/>
                         <outlet property="repeatPasswordTextField" destination="K3z-gs-mU2" id="nQ6-wp-yQc"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="fromRegisterSegue" id="bgM-Dv-yjb"/>
+                        <segue destination="7qW-Bm-0li" kind="show" identifier="fromRegisterSegue" id="oNC-AH-MI5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c48-Kb-Nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -659,6 +659,6 @@
         <image name="temporary" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bgM-Dv-yjb"/>
+        <segue reference="oNC-AH-MI5"/>
     </inferredMetricsTieBreakers>
 </document>
