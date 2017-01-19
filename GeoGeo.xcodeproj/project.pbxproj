@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5CA2196A93FA1C47450294E6 /* Pods_GeoGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */; };
-		7BA56E051DFC5F4800B0F9D8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */; };
 		8A12C4D51E30CACD007F2E81 /* MessageClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D41E30CACD007F2E81 /* MessageClass.swift */; };
 		8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D61E30DCC8007F2E81 /* ChatManager.swift */; };
+		8A12C4D91E30F705007F2E81 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */; };
+		8A12C4DB1E30F8AD007F2E81 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4DA1E30F8AD007F2E81 /* DialogsViewController.swift */; };
 		8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA223481E1BBB130055E39A /* ApiManager.swift */; };
 		8AA2234B1E1BBE3C0055E39A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */; };
 		8AA2234D1E1BBE3E0055E39A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */; };
@@ -20,7 +21,6 @@
 		8AEB68801E2FFA1A004C836D /* ConversationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB687F1E2FFA1A004C836D /* ConversationClass.swift */; };
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
 		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
-		AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */; };
 		AF56FF001DB7F5AC00B7FE25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */; };
 		AF56FF021DB7F5AC00B7FE25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */; };
 		AF56FF051DB7F5AC00B7FE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */; };
@@ -32,9 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8A12C4D41E30CACD007F2E81 /* MessageClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageClass.swift; sourceTree = "<group>"; };
 		8A12C4D61E30DCC8007F2E81 /* ChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		8A12C4DA1E30F8AD007F2E81 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
 		8AA223481E1BBB130055E39A /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AF56FEFF1DB7F5AC00B7FE25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF56FF041DB7F5AC00B7FE25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -125,6 +125,7 @@
 				8AA2234E1E1BBEA70055E39A /* Initial classes */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
 				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
+				8A12C4DA1E30F8AD007F2E81 /* DialogsViewController.swift */,
 				AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */,
 				AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */,
 				AF56FF061DB7F5AC00B7FE25 /* Info.plist */,
@@ -136,13 +137,12 @@
 			isa = PBXGroup;
 			children = (
 				AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */,
-				AF56FEFC1DB7F5AB00B7FE25 /* SecondViewController.swift */,
 				8AEB687D1E2FF91B004C836D /* ChatViewController.swift */,
+				8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */,
 				AFF282B01DDC776600E9511D /* WelcomeVC.swift */,
 				AFF282B21DDC777300E9511D /* LoginVC.swift */,
 				AFF282B41DDC777E00E9511D /* RegisterVC.swift */,
 				AFF282B61DDC7FCE00E9511D /* SettingsVC.swift */,
-				7BA56E041DFC5F4800B0F9D8 /* TabBarViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -312,13 +312,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AEB68801E2FFA1A004C836D /* ConversationClass.swift in Sources */,
-				7BA56E051DFC5F4800B0F9D8 /* TabBarViewController.swift in Sources */,
+				8A12C4D91E30F705007F2E81 /* FriendsViewController.swift in Sources */,
 				8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */,
 				8A12C4D51E30CACD007F2E81 /* MessageClass.swift in Sources */,
-				AF56FEFD1DB7F5AB00B7FE25 /* SecondViewController.swift in Sources */,
 				AFF282B71DDC7FCE00E9511D /* SettingsVC.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
 				8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */,
+				8A12C4DB1E30F8AD007F2E81 /* DialogsViewController.swift in Sources */,
 				8AA223501E1C12610055E39A /* UserClass.swift in Sources */,
 				AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */,
 				AFF282B51DDC777E00E9511D /* RegisterVC.swift in Sources */,
