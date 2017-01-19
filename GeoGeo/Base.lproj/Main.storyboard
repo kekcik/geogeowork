@@ -254,22 +254,63 @@
                                     <segment title="Friends"/>
                                     <segment title="Followers"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentControlChanged:" destination="BKm-4p-v3o" eventType="valueChanged" id="sni-0c-tn9"/>
+                                </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zh8-07-AhB">
+                                <rect key="frame" x="16" y="452" width="375" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="qLG-D6-8fl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cWS-3Z-qmq">
+                                            <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="cWS-3Z-qmq" firstAttribute="top" secondItem="qLG-D6-8fl" secondAttribute="top" constant="8" id="EIL-mn-yEL"/>
+                                        <constraint firstAttribute="trailing" secondItem="cWS-3Z-qmq" secondAttribute="trailing" constant="8" id="Sxx-ZL-XGe"/>
+                                        <constraint firstItem="cWS-3Z-qmq" firstAttribute="leading" secondItem="qLG-D6-8fl" secondAttribute="leading" constant="8" id="aKq-gS-37X"/>
+                                    </constraints>
+                                </view>
+                                <connections>
+                                    <outlet property="dataSource" destination="BKm-4p-v3o" id="cP2-Ca-PQO"/>
+                                    <outlet property="delegate" destination="BKm-4p-v3o" id="f94-2r-0Jn"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="zh8-07-AhB" secondAttribute="bottom" id="0XE-tq-93B"/>
+                            <constraint firstItem="zh8-07-AhB" firstAttribute="top" secondItem="4NS-dj-gnc" secondAttribute="bottom" constant="8" id="9Ws-IH-L3o"/>
+                            <constraint firstAttribute="trailing" secondItem="zh8-07-AhB" secondAttribute="trailing" id="EWh-Ym-LZW"/>
+                            <constraint firstItem="zh8-07-AhB" firstAttribute="leading" secondItem="Cpc-zh-eFT" secondAttribute="leading" id="EnH-9x-3uF"/>
                             <constraint firstAttribute="leadingMargin" secondItem="4NS-dj-gnc" secondAttribute="leading" id="ULQ-iH-6Zt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4NS-dj-gnc" secondAttribute="trailing" id="acY-YV-vUK"/>
                             <constraint firstItem="4NS-dj-gnc" firstAttribute="top" secondItem="Xz1-1j-4lQ" secondAttribute="bottom" id="jiw-sz-FFg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="mHF-l3-M8K">
-                        <barButtonItem key="rightBarButtonItem" image="plusRound" id="raw-TG-Hjz"/>
+                        <barButtonItem key="rightBarButtonItem" image="plusRound" id="raw-TG-Hjz">
+                            <connections>
+                                <action selector="addFriendButtonPressed:" destination="BKm-4p-v3o" id="lIy-Kr-zTs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="friendsTableView" destination="zh8-07-AhB" id="mnJ-e3-mkL"/>
+                        <outlet property="segmentControl" destination="4NS-dj-gnc" id="Sak-an-lS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wmw-p6-w2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-137" y="929"/>
+            <point key="canvasLocation" x="-138.40000000000001" y="928.78560719640188"/>
         </scene>
         <!--Chat-->
         <scene sceneID="B6S-p1-tAz">

@@ -12,6 +12,8 @@
 		8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D61E30DCC8007F2E81 /* ChatManager.swift */; };
 		8A12C4D91E30F705007F2E81 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */; };
 		8A12C4DB1E30F8AD007F2E81 /* DialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4DA1E30F8AD007F2E81 /* DialogsViewController.swift */; };
+		8A12C4E01E315944007F2E81 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4DE1E315944007F2E81 /* UserTableViewCell.swift */; };
+		8A12C4E11E315944007F2E81 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A12C4DF1E315944007F2E81 /* UserTableViewCell.xib */; };
 		8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA223481E1BBB130055E39A /* ApiManager.swift */; };
 		8AA2234B1E1BBE3C0055E39A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */; };
 		8AA2234D1E1BBE3E0055E39A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */; };
@@ -36,6 +38,8 @@
 		8A12C4D61E30DCC8007F2E81 /* ChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
 		8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		8A12C4DA1E30F8AD007F2E81 /* DialogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogsViewController.swift; sourceTree = "<group>"; };
+		8A12C4DE1E315944007F2E81 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		8A12C4DF1E315944007F2E81 /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		8AA223481E1BBB130055E39A /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		8AA2234A1E1BBE3C0055E39A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		8AA2234C1E1BBE3E0055E39A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../Library/Developer/Xcode/DerivedData/GeoGeo-csafqdxjlwghvwcdwhiiwxnsxqxh/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8A12C4E21E315949007F2E81 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8A12C4DE1E315944007F2E81 /* UserTableViewCell.swift */,
+				8A12C4DF1E315944007F2E81 /* UserTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		8AA2234E1E1BBEA70055E39A /* Initial classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +134,7 @@
 				AFF282AF1DD8DA2400E9511D /* Models */,
 				AFF282AE1DD8DA1200E9511D /* ApiContollers */,
 				AFF282AD1DD8DA0100E9511D /* Helpers */,
+				8A12C4E21E315949007F2E81 /* Cells */,
 				AF56FF0C1DB7F61500B7FE25 /* ViewControllers */,
 				8AA2234E1E1BBEA70055E39A /* Initial classes */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
@@ -250,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A12C4E11E315944007F2E81 /* UserTableViewCell.xib in Resources */,
 				AF56FF051DB7F5AC00B7FE25 /* LaunchScreen.storyboard in Resources */,
 				AF56FF021DB7F5AC00B7FE25 /* Assets.xcassets in Resources */,
 				AF56FF001DB7F5AC00B7FE25 /* Main.storyboard in Resources */,
@@ -315,6 +330,7 @@
 				8A12C4D91E30F705007F2E81 /* FriendsViewController.swift in Sources */,
 				8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */,
 				8A12C4D51E30CACD007F2E81 /* MessageClass.swift in Sources */,
+				8A12C4E01E315944007F2E81 /* UserTableViewCell.swift in Sources */,
 				AFF282B71DDC7FCE00E9511D /* SettingsVC.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
 				8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */,
