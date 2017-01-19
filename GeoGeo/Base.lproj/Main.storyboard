@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iPw-TL-wil">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iPw-TL-wil">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -89,6 +89,9 @@
                                             <constraint firstAttribute="height" constant="50" id="PTF-L3-j9I"/>
                                         </constraints>
                                         <state key="normal" title="Чат"/>
+                                        <connections>
+                                            <action selector="gotoChatButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="hpA-IO-Ang"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLy-uL-LYd">
                                         <rect key="frame" x="177.5" y="150" width="177.5" height="50"/>
@@ -536,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c48-Kb-Nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-940" y="-851.42428785607206"/>
+            <point key="canvasLocation" x="-1204" y="-982"/>
         </scene>
         <!--WelcomeVC-->
         <scene sceneID="w27-fr-zeW">

@@ -164,6 +164,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func gotoChatButtonPressed(_ sender: Any) {
+        let chatView = ChatViewController()
+//        ApiManager.getDialogWithUser(token: ApiManager.myToken,
+//                                     user_id: "1006",
+//                                     count: "100",
+//                                     offset: "0",
+//                                     callback: {resultCode, messages in})
+        let chatNavigationController = UINavigationController(rootViewController: chatView)
+        present(chatNavigationController, animated: true, completion: nil)
+    }
     
     func addSomeUsers() {
         let an : MKPointAnnotation = MKPointAnnotation.init()

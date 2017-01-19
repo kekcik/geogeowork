@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GeoGeo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>30EEB41BD0DD02B09A3E427913331FC2</key>
+		<key>634BB98B62708050802ABF1101792AE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CCEC0F0332173ADE2B7D5E04E5BEDF1</key>
+		<key>7E93EB85AD6DBE53DDDD048F9EEDE691</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5EE56BD20640CA71053D1824E09576E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

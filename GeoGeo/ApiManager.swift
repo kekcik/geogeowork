@@ -31,6 +31,18 @@ final class ApiManager{
     static var myToken = ""
     static var myUserId = ""
     
+    static func getUnixTime() -> String{
+        return "\(Int(Date().timeIntervalSince1970))"
+    }
+    
+    static func translateUnixTime(time: Int) -> Date{
+        return Date(timeIntervalSince1970: TimeInterval(time))
+    }
+    
+    static func translateToDateFromUnixTime(date: Date) -> Int{
+        return Int(date.timeIntervalSince1970)
+    }
+    
     static func register(phone: String, name: String, password: String, callback: @escaping (_ resultCode: String) -> Void){
         let path = pathToServer + "user.register"
         Alamofire.request(path,
@@ -180,6 +192,121 @@ final class ApiManager{
                                     callback(resultCode, lastLocations)
                             })
 
+    }
+    
+    static func sendMessage(token: String, user_id: String, text: String, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "messages.send_message"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id,
+                            "text": text]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
+    }
+    
+    
+    static func getDialogWithUser(token: String, user_id: String, count: String, offset: String,
+                                  callback: @escaping (_ resultCode: String, _ messages: [MessageClass]) -> Void){
+        let path = pathToServer + "messages.get_dialog"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id,
+                            "count": count,
+                            "offset": offset]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    let resultCode = json["result_code"].stringValue
+                                    var messages = [MessageClass]()
+                                    for message in json["messages"].arrayValue{
+                                        messages.append(MessageClass(id: message["id"].stringValue,
+                                                                     senderId: message["sender_id"].stringValue,
+                                                                     recieverId: message["reciever_id"].stringValue,
+                                                                     isRead: message["readed"].boolValue,
+                                                                     createdTime: message["created_at"].stringValue,
+                                                                     data: message["data"].stringValue,
+                                                                     type: message["type"].stringValue))
+                                    }
+                                    callback(resultCode, messages)
+                            })
+    }
+    
+    
+    static func getDialogs(token: String, callback: @escaping (_ resultCode: String, _ dialogs: [ConversationClass]) -> Void){
+        let path = pathToServer + "messages.get_dialogs"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    let resultCode = json["result_code"].stringValue
+                                    var dialogs = [ConversationClass]()
+                                    for dialog in json["messages"].arrayValue{
+                                        let senderId = dialog["sender_id"].stringValue
+                                        let recieverId = dialog["reciever_id"].stringValue
+                                        let conv = (ConversationClass(senderUser: UserClass(),
+                                                                      recieverUser: UserClass(),
+                                                                         latestMessageId: dialog["id"].stringValue,
+                                                                         latestMessageData: dialog["data"].stringValue,
+                                                                         latestMessageType: dialog["type"].stringValue,
+                                                                         isRead: dialog["readed"].boolValue,
+                                                                         createdTime: dialog["created_at"].stringValue))
+                                        ApiManager.getUserById(token: token, id: senderId, callback: {resultCode, user in
+                                            conv.senderUser = user
+                                        })
+                                        ApiManager.getUserById(token: token, id: recieverId, callback: {resultCode, user in
+                                            conv.recieverUser = user
+                                        })
+                                        
+                                        dialogs.append(conv)
+                                    }
+                                    callback(resultCode, dialogs)
+                            })
+    }
+    
+    
+    static func getLastMessages(token: String,
+                                callback: @escaping (_ resultCode: String, _ inId: String, _ outId: String) -> Void){
+        let path = pathToServer + "messages.get_last_messages"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue, json["in"].stringValue, json["out"].stringValue)
+                            })
+    }
+    
+    
+    static func markAsReadedOfUser(token: String, user_id: String, timeStamp: String, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "messages.get_last_messages"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id,
+                            "timestamp": timeStamp]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
     }
     
 }

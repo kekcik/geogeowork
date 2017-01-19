@@ -19,4 +19,6 @@ class UserClass{
         self.id = id
         self.phone = phone
     }
+    
+    init(){}
 }
