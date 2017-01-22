@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5CA2196A93FA1C47450294E6 /* Pods_GeoGeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */; };
+		8A09B8191E33ADF300AEB12B /* AddNewFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A09B8181E33ADF300AEB12B /* AddNewFriendViewController.swift */; };
+		8A09B81B1E33E8D100AEB12B /* RequestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A09B81A1E33E8D100AEB12B /* RequestClass.swift */; };
 		8A12C4D51E30CACD007F2E81 /* MessageClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D41E30CACD007F2E81 /* MessageClass.swift */; };
 		8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D61E30DCC8007F2E81 /* ChatManager.swift */; };
 		8A12C4D91E30F705007F2E81 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A09B8181E33ADF300AEB12B /* AddNewFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewFriendViewController.swift; sourceTree = "<group>"; };
+		8A09B81A1E33E8D100AEB12B /* RequestClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestClass.swift; sourceTree = "<group>"; };
 		8A12C4D41E30CACD007F2E81 /* MessageClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageClass.swift; sourceTree = "<group>"; };
 		8A12C4D61E30DCC8007F2E81 /* ChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
 		8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				8AEB687B1E2F9663004C836D /* LocationClass.swift */,
 				8AEB687F1E2FFA1A004C836D /* ConversationClass.swift */,
 				8A12C4D41E30CACD007F2E81 /* MessageClass.swift */,
+				8A09B81A1E33E8D100AEB12B /* RequestClass.swift */,
 			);
 			name = "Initial classes";
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */,
 				8AEB687D1E2FF91B004C836D /* ChatViewController.swift */,
 				8A12C4D81E30F705007F2E81 /* FriendsViewController.swift */,
+				8A09B8181E33ADF300AEB12B /* AddNewFriendViewController.swift */,
 				AFF282B01DDC776600E9511D /* WelcomeVC.swift */,
 				AFF282B21DDC777300E9511D /* LoginVC.swift */,
 				AFF282B41DDC777E00E9511D /* RegisterVC.swift */,
@@ -330,8 +336,10 @@
 				8A12C4D91E30F705007F2E81 /* FriendsViewController.swift in Sources */,
 				8AA223491E1BBB130055E39A /* ApiManager.swift in Sources */,
 				8A12C4D51E30CACD007F2E81 /* MessageClass.swift in Sources */,
+				8A09B81B1E33E8D100AEB12B /* RequestClass.swift in Sources */,
 				8A12C4E01E315944007F2E81 /* UserTableViewCell.swift in Sources */,
 				AFF282B71DDC7FCE00E9511D /* SettingsVC.swift in Sources */,
+				8A09B8191E33ADF300AEB12B /* AddNewFriendViewController.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
 				8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */,
 				8A12C4DB1E30F8AD007F2E81 /* DialogsViewController.swift in Sources */,

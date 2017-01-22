@@ -11,14 +11,13 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
 
-    var conversation: ConversationClass!
+    var conversation: ConversationClass = ConversationClass()
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackButton()
-        createConversation()
         automaticallyScrollsToMostRecentMessage = true
         incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.lightGray)
@@ -34,17 +33,6 @@ class ChatViewController: JSQMessagesViewController {
     
     func backButtonTapped() {
         dismiss(animated: true, completion: nil)
-    }
-
-    func createConversation(){
-        conversation = ConversationClass(senderUser: UserClass(name: "Kirill", id: "1005", phone: "1234"),
-                                         recieverUser: UserClass(name: "Ivan", id: "1006", phone: "4321"),
-                                         latestMessageId: "10",
-                                         latestMessageData: "Hello",
-                                         latestMessageType: "1",
-                                         isRead: false,
-                                         createdTime: ApiManager.getUnixTime(),
-                                         messages: [])
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,10 +64,12 @@ class ChatViewController: JSQMessagesViewController {
 //    }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, avatarImageDataForItemAt indexPath: IndexPath) -> JSQMessageAvatarImageDataSource? {
-        let message = conversation.messages[indexPath.item]
+//        let message = conversation.messages[indexPath.item]
         return (conversation.messages[indexPath.item].senderId == self.senderId() ?
-            ChatManager.createAvatar(initials: "ME", backgroundColor: ChatManager.createSenderAvatarColor()) :
-            ChatManager.createAvatar(initials: "YU", backgroundColor: ChatManager.createRecieverAvatarColor()))
+            ChatManager.createAvatar(initials: String(describing: conversation.senderUser.name.characters.first!),
+                                     backgroundColor: ChatManager.createSenderAvatarColor()) :
+            ChatManager.createAvatar(initials: String(describing: conversation.recieverUser.name.characters.first!),
+                                     backgroundColor: ChatManager.createRecieverAvatarColor()))
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAt indexPath: IndexPath) -> CGFloat {
@@ -92,8 +82,14 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
         let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-        self.conversation.messages.append(ChatManager.translateJSQMessageToMessageClass(message: message))
-        self.finishSendingMessage(animated: true)
+        ApiManager.sendMessage(token: ApiManager.myToken,
+                               user_id: conversation.recieverUser.id,
+                               text: text, callback: {resultCode in
+                                if resultCode == "0"{
+                                    self.conversation.messages.append(ChatManager.translateJSQMessageToMessageClass(message: message))
+                                    self.finishSendingMessage(animated: true)
+                                }
+        })
     }
     
     override func didPressAccessoryButton(_ sender: UIButton) {

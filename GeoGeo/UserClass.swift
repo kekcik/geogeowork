@@ -13,6 +13,7 @@ class UserClass{
     var name: String = ""
     var id: String = ""
     var phone: String = ""
+    var flag: Bool = false
     
     init(name: String, id: String, phone: String){
         self.name = name

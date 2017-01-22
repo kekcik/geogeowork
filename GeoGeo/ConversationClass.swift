@@ -12,17 +12,17 @@ import Foundation
 class ConversationClass{
     var senderUser: UserClass = UserClass()
     var recieverUser: UserClass = UserClass()
-    var latestMessageId: String = ""
-    var latestMessageData: String = ""
-    var latestMessageType: String = ""
-    var isRead: Bool = false
-    var createdTime: String = ""
+    var latestMessageId: String? = nil
+    var latestMessageData: String? = nil
+    var latestMessageType: String? = nil
+    var isRead: Bool? = false
+    var createdTime: String? = nil
     var messages: [MessageClass] = [MessageClass]()
     
     
-    init(senderUser: UserClass, recieverUser: UserClass, latestMessageId: String,
-         latestMessageData: String, latestMessageType: String,
-         isRead: Bool, createdTime: String,
+    init(senderUser: UserClass, recieverUser: UserClass, latestMessageId: String?,
+         latestMessageData: String?, latestMessageType: String?,
+         isRead: Bool?, createdTime: String?,
          messages: [MessageClass] = [MessageClass]()){
         self.senderUser = senderUser
         self.recieverUser = recieverUser
@@ -33,4 +33,6 @@ class ConversationClass{
         self.createdTime = createdTime
         self.messages = messages
     }
+    
+    init(){}
 }

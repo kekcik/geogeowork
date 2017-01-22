@@ -21,6 +21,11 @@ import SwiftyJSON
  phone = 4321
  name = kirill
  password = kirill
+ 
+ ///#3
+ phone = 123456
+ name = Kirill2017
+ password = kirill
 */
 
 
@@ -29,7 +34,7 @@ final class ApiManager{
     
     static let pathToServer = "http://109.120.159.112:4567/"
     static var myToken = ""
-    static var myUserId = ""
+    static var me = UserClass()
     
     static func getUnixTime() -> String{
         return "\(Int(Date().timeIntervalSince1970))"
@@ -71,7 +76,13 @@ final class ApiManager{
                                             }
                                             let json = JSON(response.result.value!)
                                             ApiManager.myToken = json["token"].stringValue
-                                            ApiManager.myUserId = json["id"].stringValue
+                                            ApiManager.me.id = json["id"].stringValue
+                                            ApiManager.getUserById(token: ApiManager.myToken,
+                                                                   id: ApiManager.me.id, callback: {resultCode, user in
+                                                                    if resultCode == "0"{
+                                                                        ApiManager.me = user
+                                                                    }
+                                            })
                                             callback(json["result_code"].stringValue, json["id"].stringValue, json["token"].stringValue)
                                        })
     }
@@ -104,7 +115,7 @@ final class ApiManager{
                     return
                 }
                 let json = JSON(response.result.value!)
-                callback(json["resultCode"].stringValue, UserClass(name: json["name"].stringValue, id: id, phone: json["phone"].stringValue))
+                callback(json["result_code"].stringValue, UserClass(name: json["name"].stringValue, id: id, phone: json["phone"].stringValue))
         })
     }
     
@@ -308,5 +319,158 @@ final class ApiManager{
                                     callback(json["result_code"].stringValue)
                             })
     }
+    
+    
+    static func acceptRequest(token: String, user_id: String, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "requests.accept_request"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
+    }
+    
+    static func escapeRequest(token: String, user_id: String, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "requests.escape"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
+    }
+    
+    static func followRequest(token: String, user_id: String, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "requests.follow"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
+    }
+    
+    
+    static func unfollowRequest(token: String, user_id: String, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "requests.unfollow"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
+    }
+    
+    static func refuseRequest(token: String, user_id: String, callback: @escaping (_ resultCode: String) -> Void){
+        let path = pathToServer + "requests.refuse_request"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue)
+                            })
+    }
+    
+    static func getRequests(token: String, callback: @escaping (_ resultCode: String, _ requests: [RequestClass]) -> Void){
+        let path = pathToServer + "requests.get_requests"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    let resultCode = json["result_code"].stringValue
+                                    var requests = [RequestClass]()
+                                    for request in json["requests"].arrayValue{
+                                        requests.append(RequestClass(followerId: request["observer_id"].stringValue,
+                                                                     followedId: request["observed_id"].stringValue,
+                                                                     createdTime: request["created_at"].stringValue))
+                                    }
+                                    callback(resultCode, requests)
+                            })
+    }
+    
+    static func getFollowers(token: String, callback: @escaping (_ resultCode: String, _ requests: [String]) -> Void){
+        let path = pathToServer + "permissions.get_followers"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    let resultCode = json["result_code"].stringValue
+                                    var ids = [String]()
+                                    for id in json["followers"].arrayValue{
+                                        ids.append(id.stringValue)
+                                    }
+                                    callback(resultCode, ids)
+                            })
+    }
+    
+    static func getFollowed(token: String, callback: @escaping (_ resultCode: String, _ requests: [String]) -> Void){
+        let path = pathToServer + "permissions.get_followed"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    let resultCode = json["result_code"].stringValue
+                                    var ids = [String]()
+                                    for id in json["followed"].arrayValue{
+                                        ids.append(id.stringValue)
+                                    }
+                                    callback(resultCode, ids)
+                            })
+    }
+    
+    
+    static func getUserPermissions(token: String, user_id: String, callback: @escaping (_ resultCode: String, _ inAns: Bool, _ outAns: Bool) -> Void){
+        let path = pathToServer + "permissions.get_user_permissions"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "id": user_id]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    callback(json["result_code"].stringValue, json["in"].boolValue, json["out"].boolValue)
+                            })
+    }
+    
     
 }
