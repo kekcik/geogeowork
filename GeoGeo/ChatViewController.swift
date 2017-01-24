@@ -74,7 +74,6 @@ class ChatViewController: JSQMessagesViewController {
 //    }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, avatarImageDataForItemAt indexPath: IndexPath) -> JSQMessageAvatarImageDataSource? {
-//        let message = conversation.messages[indexPath.item]
         return (conversation.messages[indexPath.item].senderId == self.senderId() ?
             ChatManager.createAvatar(initials: String(describing: conversation.senderUser.name.characters.first!),
                                      backgroundColor: ChatManager.createSenderAvatarColor()) :

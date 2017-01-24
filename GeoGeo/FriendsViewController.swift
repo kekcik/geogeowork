@@ -80,7 +80,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             ApiManager.getUserPermissions(token: ApiManager.myToken,
                                           user_id: followingList[indexPath.row].id, callback: {
                                             resultCode, inAns, outAns in
-                                            if resultCode == "0" && outAns{
+                                            if resultCode == "0" && (outAns || inAns){
                                                 cell.setHaveFriend()
                                             }
             })
@@ -93,7 +93,7 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
             ApiManager.getUserPermissions(token: ApiManager.myToken,
                                           user_id: followersList[indexPath.row].id, callback: {
                                             resultCode, inAns, outAns in
-                                            if resultCode == "0" && outAns{
+                                            if resultCode == "0" && (outAns || inAns){
                                                 cell.setHaveFriend()
                                             }
             })
@@ -114,7 +114,6 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         friendsTableView.deselectRow(at: indexPath, animated: true)
-        let chatView = ChatViewController()
         var user = UserClass()
         switch segmentControl.selectedSegmentIndex{
         case 0:
@@ -126,60 +125,52 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
         default:
             return
         }
-        chatView.conversation = ConversationClass(senderUser: ApiManager.me,
-                                                  recieverUser: user,
-                                                  latestMessageId: nil,
-                                                  latestMessageData: nil,
-                                                  latestMessageType: nil,
-                                                  isRead: nil,
-                                                  createdTime: nil)
-        ApiManager.getDialogWithUser(token: ApiManager.myToken,
-                                     user_id: user.id,
-                                     count: "1000",
-                                     offset: "0",
-                                     callback: {resultCode, messages in
-                                        if resultCode == "0"{
-                                            chatView.conversation.messages = messages
-                                            chatView.conversation.messages.reverse()
-                                        }
-                                        let chatNavigationController = UINavigationController(rootViewController: chatView)
-                                        self.present(chatNavigationController, animated: true, completion: nil)
+        ApiManager.createChat(with: user, callback: { chatView in
+            let chatNavigationController = UINavigationController(rootViewController: chatView)
+            self.present(chatNavigationController, animated: true, completion: nil)
         })
     }
     
-    func initialProperties(){
-        followingList.removeAll()
-        followersList.removeAll()
-        requestsList.removeAll()
+    func getFollowed(){
         ApiManager.getFollowed(token: ApiManager.myToken,
-                                callback: {resultCode, requests in
-                                    var count = 0
-                                    for request in requests{
-                                        ApiManager.getUserById(token: ApiManager.myToken, id: request, callback: {
-                                            resultCode, user in
+                               callback: {resultCode, requests in
+                                var count = 0
+                                for request in requests{
+                                    ApiManager.getUserById(token: ApiManager.myToken, id: request, callback: {
+                                        resultCode, user in
+                                        if resultCode == "0"{
                                             self.followingList.append(user)
                                             count += 1
                                             if count == requests.count{
                                                 self.reloadUI()
                                             }
-                                        })
-                                    }
-                                    
+                                        }
+                                    })
+                                }
         })
+        
+    }
+    
+    func getFollowers(){
         ApiManager.getFollowers(token: ApiManager.myToken,
                                 callback: {resultCode, requests in
                                     var count = 0
                                     for request in requests{
                                         ApiManager.getUserById(token: ApiManager.myToken, id: request, callback: {
                                             resultCode, user in
-                                            self.followersList.append(user)
-                                            count += 1
-                                            if count == requests.count{
-                                                self.reloadUI()
+                                            if resultCode == "0"{
+                                                self.followersList.append(user)
+                                                count += 1
+                                                if count == requests.count{
+                                                    self.reloadUI()
+                                                }
                                             }
                                         })
                                     }
         })
+    }
+    
+    func getRequests(){
         ApiManager.getRequests(token: ApiManager.myToken,
                                callback: {resultCode, requests in
                                 var count = 0
@@ -192,16 +183,26 @@ class FriendsViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     }
                                     ApiManager.getUserById(token: ApiManager.myToken, id: id, callback: {
                                         resultCode, user in
-                                        self.requestsList.append(user)
-                                        self.requestsList.last?.flag = flag
-                                        count += 1
-                                        if count == requests.count{
-                                            self.reloadUI()
+                                        if resultCode == "0"{
+                                            self.requestsList.append(user)
+                                            self.requestsList.last?.flag = flag
+                                            count += 1
+                                            if count == requests.count{
+                                                self.reloadUI()
+                                            }
                                         }
                                     })
                                 }
                                 
         })
-        
+    }
+    
+    func initialProperties(){
+        followingList.removeAll()
+        followersList.removeAll()
+        requestsList.removeAll()
+        getFollowed()
+        getFollowers()
+        getRequests()
     }
 }

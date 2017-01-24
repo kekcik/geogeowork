@@ -48,6 +48,44 @@ final class ApiManager{
         return Int(date.timeIntervalSince1970)
     }
     
+    
+    static func makeUnixTimeReadble(time: Int) -> String{
+        let date = translateUnixTime(time: time)
+        let calendar = NSCalendar.current
+        var hour = String(calendar.component(.hour, from: date as Date))
+        var minutes = String(calendar.component(.minute, from: date as Date))
+        if hour.characters.count == 1{
+            hour = "0" + hour
+        }
+        if minutes.characters.count == 1{
+            minutes = "0" + minutes
+        }
+        return "\(hour):\(minutes)"
+    }
+    
+    static func createChat(with user: UserClass, callback: @escaping (_ chatView: ChatViewController) -> Void){
+        let chatView = ChatViewController()
+        chatView.conversation = ConversationClass(senderUser: ApiManager.me,
+                                                  recieverUser: user,
+                                                  latestMessageId: nil,
+                                                  latestMessageData: nil,
+                                                  latestMessageType: nil,
+                                                  isRead: nil,
+                                                  createdTime: nil)
+        ApiManager.getDialogWithUser(token: ApiManager.myToken,
+                                     user_id: user.id,
+                                     count: "1000",
+                                     offset: "0",
+                                     callback: {resultCode, messages in
+                                        if resultCode == "0"{
+                                            chatView.conversation.messages = messages
+                                            chatView.conversation.messages.reverse()
+                                        }
+                                        callback(chatView)
+        })
+
+    }
+    
     static func register(phone: String, name: String, password: String, callback: @escaping (_ resultCode: String) -> Void){
         let path = pathToServer + "user.register"
         Alamofire.request(path,
@@ -181,7 +219,7 @@ final class ApiManager{
                             })
     }
     
-    static func getLastLocations(token: String, user_id: String, callback: @escaping (_ resultCode: String, _ locations: [LocationClass]) -> Void){
+    static func getLastLocationOfUser(token: String, user_id: String, callback: @escaping (_ resultCode: String, _ location: LocationClass?) -> Void){
         let path = pathToServer + "location.get_location"
         Alamofire.request(path,
                           parameters: [
@@ -200,9 +238,36 @@ final class ApiManager{
                                                                            accuracy: location["accuracy"].stringValue,
                                                                            createdAt: location["created_at"].stringValue))
                                     }
-                                    callback(resultCode, lastLocations)
+                                    callback(resultCode, (lastLocations.count == 0 ? nil: lastLocations[0]))
                             })
 
+    }
+    
+    static func getLocationHistoryOfUser(token: String, user_id: String, timeFrom: String, timeTo: String, step: String,
+                                         callback: @escaping (_ resultCode: String, _ locations: [LocationClass]) -> Void){
+        let path = pathToServer + "location.get_history"
+        Alamofire.request(path,
+                          parameters: [
+                            "token": token,
+                            "user_id": user_id,
+                            "time_from": timeFrom,
+                            "time_to": timeTo,
+                            "step": step]).responseJSON(completionHandler:
+                                {response in
+                                    guard response.result.isSuccess else{
+                                        return
+                                    }
+                                    let json = JSON(response.result.value!)
+                                    let resultCode = json["result_code"].stringValue
+                                    var lastLocations = [LocationClass]()
+                                    for location in json["locations"].arrayValue{
+                                        lastLocations.append(LocationClass(lat: location["lat"].stringValue,
+                                                                           lon: location["lon"].stringValue,
+                                                                           accuracy: location["accuracy"].stringValue,
+                                                                           createdAt: location["created_at"].stringValue))
+                                    }
+                                    callback(resultCode, lastLocations)
+                            })
     }
     
     static func sendMessage(token: String, user_id: String, text: String, callback: @escaping (_ resultCode: String) -> Void){

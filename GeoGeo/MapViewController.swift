@@ -28,7 +28,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var UpSwitcher: NSLayoutConstraint!
     @IBOutlet weak var UpButtonHide: NSLayoutConstraint!
     @IBOutlet weak var UpperButton: UIButton!
-    @IBOutlet weak var Button: UIButton!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var lastUpdateTimeLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     
     private var showMore = false
@@ -36,18 +40,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private var locationManager: CLLocationManager = CLLocationManager()
     fileprivate var lastLocations = [LocationClass]()
     private var isFirstEnter: Bool = true
+    var lastCheckedUser: UserClass? = nil
     //private var geocoder = CLGeocoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerMap()
         registerLocationManager()
-        addSomeUsers()
+        setDefaultSliderInfo()
 //        ApiManager.getLastLocations(token: ApiManager.myToken,
 //                                    user_id: ApiManager.myUserId,
 //                                    callback: {resultCode, locations in
 //        
 //        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showFriendsOnMap()
     }
     
     
@@ -63,6 +73,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.map.delegate = self
         map.showsUserLocation = true
     }
+    
+    func showFriendsOnMap(){
+        getFollowers(callback: {users in
+            for user in users{
+                self.addUserOnMap(user: user)
+            }
+        })
+    }
+    
+    func updateSliderInfo(user: UserClass){
+        nameLabel.text = user.name
+        phoneLabel.text = user.phone
+        lastUpdateTimeLabel.text = ApiManager.makeUnixTimeReadble(time: Int(ApiManager.getUnixTime())!)
+        lastCheckedUser = user
+        if user.id == ApiManager.me.id{
+            chatButton.isEnabled = false
+            followButton.isEnabled = false
+        }else{
+            chatButton.isEnabled = true
+            followButton.isEnabled = true
+        }
+    }
+    
+    func setDefaultSliderInfo(){
+        updateSliderInfo(user: ApiManager.me)
+    }
 
 
     @IBAction func SwipeShowMore(_ sender: UISwipeGestureRecognizer) {
@@ -77,6 +113,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         ShowMoreAction()
     }
     
+    @IBAction func unfollowButtonPressed(_ sender: Any) {
+        ApiManager.unfollowRequest(token: ApiManager.myToken, user_id: lastCheckedUser!.id, callback: {
+            resultCode in
+            if resultCode == "0"{
+                self.map.removeAnnotations(self.map.annotations)
+                self.showFriendsOnMap()
+                self.setDefaultSliderInfo()
+            }
+        })
+    }
     
     @IBAction func DetailMod(_ sender: Any) {
         detailMod = true
@@ -102,16 +148,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func ShowMoreAction () {
         UIView.animate(withDuration: Double(0.333), animations: {
             if self.showMore {
-                
+                self.UpperButton.setTitle("Choose the user", for: .normal)
                 self.UpSwitcher.constant = 25;
                 self.UpButtonHide.constant = 25;
-                
                 self.customC.constant = -260
                 self.map.alpha = 1
                 self.MVRight.constant = 10
                 self.MVLeft.constant = 10
                 self.MVUp.constant = -40
             } else {
+                self.UpperButton.setTitle("Hide", for: .normal)
                 self.UpSwitcher.constant = -50;
                 self.UpButtonHide.constant = -50;
                 self.customC.constant = 0
@@ -165,25 +211,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func gotoChatButtonPressed(_ sender: Any) {
-        let chatView = ChatViewController()
-//        ApiManager.getDialogWithUser(token: ApiManager.myToken,
-//                                     user_id: "1006",
-//                                     count: "100",
-//                                     offset: "0",
-//                                     callback: {resultCode, messages in})
-        let chatNavigationController = UINavigationController(rootViewController: chatView)
-        present(chatNavigationController, animated: true, completion: nil)
+        ApiManager.createChat(with: lastCheckedUser!, callback: {chatView in
+            let chatNavigationController = UINavigationController(rootViewController: chatView)
+            self.present(chatNavigationController, animated: true, completion: nil)
+
+        })
     }
     
-    func addSomeUsers() {
-        let an : MKPointAnnotation = MKPointAnnotation.init()
-        let name = NSLocalizedString("ivan.trofimov", comment: "it's my name")
-        an.title = name
-        an.subtitle = "kokoko?"
-        an.coordinate.latitude = 59.95672917
-        an.coordinate.longitude = 30.31162262
-        map.addAnnotation(an)
+    func addUserOnMap(user: UserClass){
+        map.addAnnotation(UserAnnotation(user: user))
     }
+    
     
 //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 //        let view = MKPinAnnotationView()
@@ -197,6 +235,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if view.annotation is MKUserLocation{
             return
         }
+        
+        if let an = view.annotation as? UserAnnotation{
+            updateSliderInfo(user: an.user)
+            self.UpperButton.sendActions(for: .touchUpInside)
+        }
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)
     }
     
@@ -204,6 +247,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         map.showAnnotations(map.annotations, animated: true)
     }
 
+    func getFollowers(callback: @escaping (_ followers: [UserClass]) -> Void){
+        ApiManager.getFollowers(token: ApiManager.myToken,
+                                callback: {resultCode, requests in
+                                    var followers = [UserClass]()
+                                    for request in requests{
+                                        ApiManager.getUserById(token: ApiManager.myToken, id: request, callback: {
+                                            resultCode, user in
+                                            if resultCode == "0"{
+                                                //followers.append(user)
+                                                ApiManager.getLastLocationOfUser(token: ApiManager.myToken,
+                                                                                 user_id: request, callback: {
+                                                                                    resultCode, location in
+                                                                                    if resultCode == "0"{
+                                                                                        user.lat = (location?.lat)!
+                                                                                        user.lon = (location?.lon)!
+                                                                                        followers.append(user)
+                                                                                        if followers.count == requests.count{
+                                                                                            callback(followers)
+                                                                                        }
+                                                                                    }
+                                                })
+                                            }
+                                        })
+                                        
+                                    }
+        })
+    }
 
 }
 

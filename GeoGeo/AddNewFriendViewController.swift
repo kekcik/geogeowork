@@ -64,7 +64,9 @@ class AddNewFriendViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
-        search()
+        if searchTextField.text != ""{
+            search()
+        }
     }
     
     

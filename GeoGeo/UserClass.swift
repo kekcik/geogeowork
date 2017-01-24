@@ -14,6 +14,8 @@ class UserClass{
     var id: String = ""
     var phone: String = ""
     var flag: Bool = false
+    var lon: String = ""
+    var lat: String = ""
     
     init(name: String, id: String, phone: String){
         self.name = name

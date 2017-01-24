@@ -23,6 +23,7 @@
 		8AEB687C1E2F9663004C836D /* LocationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB687B1E2F9663004C836D /* LocationClass.swift */; };
 		8AEB687E1E2FF91B004C836D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB687D1E2FF91B004C836D /* ChatViewController.swift */; };
 		8AEB68801E2FFA1A004C836D /* ConversationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB687F1E2FFA1A004C836D /* ConversationClass.swift */; };
+		8AFA7BA01E37E6A2002E1949 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA7B9F1E37E6A2002E1949 /* UserAnnotation.swift */; };
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
 		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
 		AF56FF001DB7F5AC00B7FE25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		8AEB687B1E2F9663004C836D /* LocationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationClass.swift; sourceTree = "<group>"; };
 		8AEB687D1E2FF91B004C836D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8AEB687F1E2FFA1A004C836D /* ConversationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationClass.swift; sourceTree = "<group>"; };
+		8AFA7B9F1E37E6A2002E1949 /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoGeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo.debug.xcconfig"; sourceTree = "<group>"; };
 		ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				AFF282B21DDC777300E9511D /* LoginVC.swift */,
 				AFF282B41DDC777E00E9511D /* RegisterVC.swift */,
 				AFF282B61DDC7FCE00E9511D /* SettingsVC.swift */,
+				8AFA7B9F1E37E6A2002E1949 /* UserAnnotation.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
 				8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */,
 				8A12C4DB1E30F8AD007F2E81 /* DialogsViewController.swift in Sources */,
+				8AFA7BA01E37E6A2002E1949 /* UserAnnotation.swift in Sources */,
 				8AA223501E1C12610055E39A /* UserClass.swift in Sources */,
 				AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */,
 				AFF282B51DDC777E00E9511D /* RegisterVC.swift in Sources */,
