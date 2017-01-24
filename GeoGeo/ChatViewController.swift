@@ -14,6 +14,7 @@ class ChatViewController: JSQMessagesViewController {
     var conversation: ConversationClass = ConversationClass()
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
+    var updateTimer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,19 @@ class ChatViewController: JSQMessagesViewController {
         automaticallyScrollsToMostRecentMessage = true
         incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.lightGray)
+        updateTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         self.collectionView?.reloadData()
         self.collectionView?.layoutIfNeeded()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateTimer.invalidate()
+    }
+    
+    func runTimedCode() {
+        reloadDialog()
+    }
     
     func setupBackButton() {
         let backButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
@@ -107,6 +117,21 @@ class ChatViewController: JSQMessagesViewController {
 //        sheet.addAction(photoAction)
         sheet.addAction(cancelAction)
         self.present(sheet, animated: true, completion: nil)
+    }
+    
+    func reloadDialog(){
+        ApiManager.getDialogWithUser(token: ApiManager.myToken,
+                                     user_id: self.conversation.recieverUser.id,
+                                     count: "1000",
+                                     offset: "0",
+                                     callback: {resultCode, messages in
+                                        if resultCode == "0"{
+                                            self.conversation.messages = messages
+                                            self.conversation.messages.reverse()
+                                            self.collectionView?.reloadData()
+                                        }
+        })
+
     }
 
 

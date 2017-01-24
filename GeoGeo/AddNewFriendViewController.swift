@@ -20,6 +20,12 @@ class AddNewFriendViewController: UIViewController, UITableViewDelegate, UITable
         requestsTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
     }
     
+    @IBAction func searchTextFieldDidChange(_ sender: Any) {
+        if searchTextField.text! != ""{
+            search()
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
