@@ -19,6 +19,7 @@ class UserTableViewCell: UITableViewCell {
         case following
         case follower
         case request
+        case find
     }
     
     var user = UserClass()
@@ -50,7 +51,9 @@ class UserTableViewCell: UITableViewCell {
                                         }
             })
         }else{
-            if statusOfCell == status.following || statusOfCell == status.follower{
+            if statusOfCell == status.following ||
+                statusOfCell == status.follower ||
+                statusOfCell == status.find{
                 ApiManager.followRequest(token: ApiManager.myToken,
                                          user_id: user.id, callback: {resultCode in
                                             if resultCode == "0"{

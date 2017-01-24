@@ -131,7 +131,7 @@ final class ApiManager{
                                         return
                                     }
                                     let json = JSON(response.result.value!)
-                                    var users: [UserClass]!
+                                    var users = [UserClass]()
                                     for user in json["users"].arrayValue{
                                         users.append(UserClass(name: user["name"].stringValue,
                                                                id: user["id"].stringValue,
@@ -153,7 +153,7 @@ final class ApiManager{
                                         return
                                     }
                                     let json = JSON(response.result.value!)
-                                    var users: [UserClass]!
+                                    var users = [UserClass]()
                                     for user in json["users"].arrayValue{
                                         users.append(UserClass(name: user["name"].stringValue,
                                                                id: user["id"].stringValue,

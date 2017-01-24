@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddNewFriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddNewFriendViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var requestsTableView: UITableView!
@@ -16,8 +16,6 @@ class AddNewFriendViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        requests.append(UserClass(name: "kirill", id: "1005", phone: "+79992033333"))
-        requests.append(UserClass(name: "Ivan", id: "243", phone: "+134324232442"))
         requestsTableView.rowHeight = 80
         requestsTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserCell")
     }
@@ -38,6 +36,16 @@ class AddNewFriendViewController: UIViewController, UITableViewDelegate, UITable
         let cell = requestsTableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         cell.nameLabel.text = requests[indexPath.row].name
         cell.phoneLabel.text = requests[indexPath.row].phone
+        cell.user = requests[indexPath.row]
+        cell.setAddFriend()
+        cell.statusOfCell = UserTableViewCell.status.find
+        ApiManager.getUserPermissions(token: ApiManager.myToken,
+                                      user_id: requests[indexPath.row].id, callback: {
+                                        resultCode, inAns, outAns in
+                                        if resultCode == "0" && outAns{
+                                            cell.setHaveFriend()
+                                        }
+        })
         return cell
     }
     
@@ -48,4 +56,32 @@ class AddNewFriendViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         requestsTableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        search()
+    }
+    
+    
+    func search(){
+        let message = searchTextField.text!
+        var variants = [UserClass]()
+        ApiManager.searchUserByName(token: ApiManager.myToken,
+                                    name: message,
+                                    callback: {resultCode, users in
+                                        if resultCode == "0"{
+                                            variants.append(contentsOf: users)
+                                            ApiManager.searchUserByPhone(token: ApiManager.myToken,
+                                                                         phone: message,
+                                                                         callback: {resultCode, users in
+                                                                            if resultCode == "0"{
+                                                                                variants.append(contentsOf: users)
+                                                                                self.requests = variants
+                                                                                self.reloadUI()
+                                                                            }
+                                            })
+                                        }
+        })
+
+    }
+    
 }
