@@ -63,7 +63,12 @@ final class ApiManager{
         return "\(hour):\(minutes)"
     }
     
-    static func createChat(with user: UserClass, callback: @escaping (_ chatView: ChatViewController) -> Void){
+    static func createChat(with user: UserClass,
+                           latestMessageId: String? = nil,
+                           latestMessageData: String? = nil,
+                           isRead: Bool? = nil,
+                           createdTime: String? = nil,
+                           callback: @escaping (_ chatView: ChatViewController) -> Void){
         let chatView = ChatViewController()
         chatView.conversation = ConversationClass(senderUser: ApiManager.me,
                                                   recieverUser: user,
@@ -327,28 +332,26 @@ final class ApiManager{
                                         return
                                     }
                                     let json = JSON(response.result.value!)
-                                    let resultCode = json["result_code"].stringValue
+                                    let resultCodeMain = json["result_code"].stringValue
                                     var dialogs = [ConversationClass]()
-                                    for dialog in json["messages"].arrayValue{
+                                    for dialog in json["dialogs"].arrayValue{
                                         let senderId = dialog["sender_id"].stringValue
-                                        let recieverId = dialog["reciever_id"].stringValue
-                                        let conv = (ConversationClass(senderUser: UserClass(),
-                                                                      recieverUser: UserClass(),
-                                                                         latestMessageId: dialog["id"].stringValue,
-                                                                         latestMessageData: dialog["data"].stringValue,
-                                                                         latestMessageType: dialog["type"].stringValue,
-                                                                         isRead: dialog["readed"].boolValue,
-                                                                         createdTime: dialog["created_at"].stringValue))
-                                        ApiManager.getUserById(token: token, id: senderId, callback: {resultCode, user in
-                                            conv.senderUser = user
-                                        })
-                                        ApiManager.getUserById(token: token, id: recieverId, callback: {resultCode, user in
-                                            conv.recieverUser = user
+                                        let recieverId = dialog["receiver_id"].stringValue
+                                        let nextRecieverId = (senderId == me.id ? recieverId: senderId)
+                                        ApiManager.getUserById(token: token, id: nextRecieverId, callback: {resultCode, user in
+                                            dialogs.append(ConversationClass(senderUser: ApiManager.me,
+                                                                             recieverUser: user,
+                                                                             latestMessageId: dialog["id"].stringValue,
+                                                                             latestMessageData: dialog["data"].stringValue,
+                                                                             latestMessageType: dialog["type"].stringValue,
+                                                                             isRead: dialog["readed"].boolValue,
+                                                                             createdTime: ApiManager.makeUnixTimeReadble(time: dialog["created_at"].intValue)))
+                                            if dialogs.count == json["dialogs"].arrayValue.count{
+                                                callback(resultCodeMain, dialogs)
+                                            }
                                         })
                                         
-                                        dialogs.append(conv)
                                     }
-                                    callback(resultCode, dialogs)
                             })
     }
     

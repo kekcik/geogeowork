@@ -24,6 +24,8 @@
 		8AEB687E1E2FF91B004C836D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB687D1E2FF91B004C836D /* ChatViewController.swift */; };
 		8AEB68801E2FFA1A004C836D /* ConversationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEB687F1E2FFA1A004C836D /* ConversationClass.swift */; };
 		8AFA7BA01E37E6A2002E1949 /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA7B9F1E37E6A2002E1949 /* UserAnnotation.swift */; };
+		8AFA7BA31E389163002E1949 /* DialogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA7BA11E389163002E1949 /* DialogTableViewCell.swift */; };
+		8AFA7BA41E389163002E1949 /* DialogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AFA7BA21E389163002E1949 /* DialogTableViewCell.xib */; };
 		AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */; };
 		AF56FEFB1DB7F5AB00B7FE25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF56FEFA1DB7F5AB00B7FE25 /* MapViewController.swift */; };
 		AF56FF001DB7F5AC00B7FE25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		8AEB687D1E2FF91B004C836D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8AEB687F1E2FFA1A004C836D /* ConversationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationClass.swift; sourceTree = "<group>"; };
 		8AFA7B9F1E37E6A2002E1949 /* UserAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
+		8AFA7BA11E389163002E1949 /* DialogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogTableViewCell.swift; sourceTree = "<group>"; };
+		8AFA7BA21E389163002E1949 /* DialogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogTableViewCell.xib; sourceTree = "<group>"; };
 		9BCA4D7D4BBF81FF7400968E /* Pods-GeoGeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoGeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoGeo/Pods-GeoGeo.debug.xcconfig"; sourceTree = "<group>"; };
 		ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoGeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF56FEF51DB7F5AB00B7FE25 /* GeoGeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoGeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +103,8 @@
 			children = (
 				8A12C4DE1E315944007F2E81 /* UserTableViewCell.swift */,
 				8A12C4DF1E315944007F2E81 /* UserTableViewCell.xib */,
+				8AFA7BA11E389163002E1949 /* DialogTableViewCell.swift */,
+				8AFA7BA21E389163002E1949 /* DialogTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -146,7 +152,6 @@
 				8AA2234E1E1BBEA70055E39A /* Initial classes */,
 				AF56FEF81DB7F5AB00B7FE25 /* AppDelegate.swift */,
 				AF56FEFE1DB7F5AC00B7FE25 /* Main.storyboard */,
-				8A12C4DA1E30F8AD007F2E81 /* DialogsViewController.swift */,
 				AF56FF031DB7F5AC00B7FE25 /* LaunchScreen.storyboard */,
 				AF56FF011DB7F5AC00B7FE25 /* Assets.xcassets */,
 				AF56FF061DB7F5AC00B7FE25 /* Info.plist */,
@@ -165,6 +170,7 @@
 				AFF282B21DDC777300E9511D /* LoginVC.swift */,
 				AFF282B41DDC777E00E9511D /* RegisterVC.swift */,
 				AFF282B61DDC7FCE00E9511D /* SettingsVC.swift */,
+				8A12C4DA1E30F8AD007F2E81 /* DialogsViewController.swift */,
 				8AFA7B9F1E37E6A2002E1949 /* UserAnnotation.swift */,
 			);
 			name = ViewControllers;
@@ -275,6 +281,7 @@
 			files = (
 				8A12C4E11E315944007F2E81 /* UserTableViewCell.xib in Resources */,
 				AF56FF051DB7F5AC00B7FE25 /* LaunchScreen.storyboard in Resources */,
+				8AFA7BA41E389163002E1949 /* DialogTableViewCell.xib in Resources */,
 				AF56FF021DB7F5AC00B7FE25 /* Assets.xcassets in Resources */,
 				AF56FF001DB7F5AC00B7FE25 /* Main.storyboard in Resources */,
 			);
@@ -342,6 +349,7 @@
 				8A09B81B1E33E8D100AEB12B /* RequestClass.swift in Sources */,
 				8A12C4E01E315944007F2E81 /* UserTableViewCell.swift in Sources */,
 				AFF282B71DDC7FCE00E9511D /* SettingsVC.swift in Sources */,
+				8AFA7BA31E389163002E1949 /* DialogTableViewCell.swift in Sources */,
 				8A09B8191E33ADF300AEB12B /* AddNewFriendViewController.swift in Sources */,
 				AF56FEF91DB7F5AB00B7FE25 /* AppDelegate.swift in Sources */,
 				8A12C4D71E30DCC8007F2E81 /* ChatManager.swift in Sources */,

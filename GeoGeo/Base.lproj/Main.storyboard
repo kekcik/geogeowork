@@ -215,7 +215,7 @@
             </objects>
             <point key="canvasLocation" x="-1090.4000000000001" y="928.78560719640188"/>
         </scene>
-        <!--Friends-->
+        <!--Requests-->
         <scene sceneID="jm4-QK-8oh">
             <objects>
                 <viewController id="BKm-4p-v3o" customClass="FriendsViewController" customModule="GeoGeo" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,7 +258,7 @@
                             <constraint firstItem="wEA-8G-oDb" firstAttribute="bottom" secondItem="Cpc-zh-eFT" secondAttribute="bottomMargin" id="seN-qi-AVj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Friends" id="mHF-l3-M8K">
+                    <navigationItem key="navigationItem" title="Requests" id="mHF-l3-M8K">
                         <barButtonItem key="rightBarButtonItem" image="plusRound" id="raw-TG-Hjz">
                             <connections>
                                 <action selector="addFriendButtonPressed:" destination="BKm-4p-v3o" id="lIy-Kr-zTs"/>
@@ -275,7 +275,7 @@
             </objects>
             <point key="canvasLocation" x="-138.40000000000001" y="928.78560719640188"/>
         </scene>
-        <!--Chat-->
+        <!--Chats-->
         <scene sceneID="B6S-p1-tAz">
             <objects>
                 <viewController id="sGP-6W-hiq" customClass="DialogsViewController" customModule="GeoGeo" customModuleProvider="target" sceneMemberID="viewController">
@@ -286,13 +286,32 @@
                     <view key="view" contentMode="scaleToFill" id="zoj-bJ-vdp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BgN-vM-sav">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sGP-6W-hiq" id="KcT-2a-9tq"/>
+                                    <outlet property="delegate" destination="sGP-6W-hiq" id="v8z-9t-aWS"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BgN-vM-sav" secondAttribute="trailing" id="5My-lN-wMZ"/>
+                            <constraint firstItem="BgN-vM-sav" firstAttribute="leading" secondItem="zoj-bJ-vdp" secondAttribute="leading" id="Gl6-du-3vU"/>
+                            <constraint firstAttribute="bottom" secondItem="BgN-vM-sav" secondAttribute="bottom" id="dBg-fv-0Se"/>
+                            <constraint firstItem="BgN-vM-sav" firstAttribute="top" secondItem="zoj-bJ-vdp" secondAttribute="top" id="uoa-dy-rbA"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat" id="lOM-Lb-0Fn"/>
+                    <navigationItem key="navigationItem" title="Chats" id="lOM-Lb-0Fn"/>
+                    <connections>
+                        <outlet property="chatTableView" destination="BgN-vM-sav" id="PgU-MD-pd2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMZ-Ov-2Tx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="929"/>
+            <point key="canvasLocation" x="784.79999999999995" y="928.78560719640188"/>
         </scene>
         <!--Add New Friend View Controller-->
         <scene sceneID="fgB-Hz-ooC">
@@ -752,11 +771,11 @@
             </objects>
             <point key="canvasLocation" x="-1089" y="204"/>
         </scene>
-        <!--Friends-->
+        <!--Requests-->
         <scene sceneID="3iG-YR-zDg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JLt-Lc-Lkg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon" id="xIZ-fv-4Cc"/>
+                    <tabBarItem key="tabBarItem" title="Requests" image="friendsIcon" id="xIZ-fv-4Cc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCM-GU-1ee">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -771,11 +790,11 @@
             </objects>
             <point key="canvasLocation" x="-137" y="204"/>
         </scene>
-        <!--Chat-->
+        <!--Chats-->
         <scene sceneID="S8E-oC-3Z2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cxa-bE-iWb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chat" image="chatIcon" id="giF-nR-4Kb"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="chatIcon" id="giF-nR-4Kb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cat-93-acC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
