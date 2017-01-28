@@ -345,8 +345,12 @@ final class ApiManager{
                                                                              latestMessageData: dialog["data"].stringValue,
                                                                              latestMessageType: dialog["type"].stringValue,
                                                                              isRead: dialog["readed"].boolValue,
-                                                                             createdTime: ApiManager.makeUnixTimeReadble(time: dialog["created_at"].intValue)))
+                                                                             createdTime: dialog["created_at"].stringValue))
                                             if dialogs.count == json["dialogs"].arrayValue.count{
+                                                dialogs.sort(by: {d1, d2 in d1.createdTime! > d2.createdTime!})
+                                                for d in 0 ..< dialogs.count{
+                                                    dialogs[d].createdTime = ApiManager.makeUnixTimeReadble(time: Int(dialogs[d].createdTime!)!)
+                                                }
                                                 callback(resultCodeMain, dialogs)
                                             }
                                         })
