@@ -252,7 +252,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                    accuracy: "3.0", createdAt: nil))
         ApiManager.setLocationPoint(token: ApiManager.myToken, location: lastLocations.last!,
                                     callback: {resultCode in
-//                                        print(resultCode)
                                         if resultCode != "0"{
                                             self.showAlert(title: "Error", message: "Something went wrong with sending data")
                                         }})
