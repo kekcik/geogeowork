@@ -308,7 +308,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
 
     func getFollowers(callback: @escaping (_ followers: [UserClass]) -> Void){
-        ApiManager.getFollowers(token: ApiManager.myToken,
+        ApiManager.getFollowed(token: ApiManager.myToken,
                                 callback: {resultCode, requests in
                                     var followers = [UserClass]()
                                     for request in requests{
