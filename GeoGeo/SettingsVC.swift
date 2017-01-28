@@ -12,4 +12,16 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func LocationPermissionButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func NotificationsPermissonButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        
+    }
 }

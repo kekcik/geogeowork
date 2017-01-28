@@ -33,6 +33,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var lastUpdateTimeLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var reloadMapButton: UIBarButtonItem!
     
     
     private var showMore = false
@@ -233,6 +234,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         showMore = !showMore
     }
     
+    @IBAction func reloadMapButtonPressed(_ sender: Any) {
+        showFriendsOnMap()
+        setDefaultSliderInfo()
+    }
     
     internal func locationManager(_ manager: CLLocationManager,
                                   didFailWithError error: Error) {
