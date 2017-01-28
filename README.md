@@ -5,7 +5,7 @@ An iOS app that allows you to see geolocation of your friends in real-time, the 
 - Working with map
 - Having 'Requests' list that includes followers, following, requests
 - Showing history of movements and real-time geolocation of following list
-- Chat with great design in real time
+- Chat with great design
 
 # Todo
 - Show perimeter on the map
