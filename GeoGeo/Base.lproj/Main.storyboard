@@ -33,6 +33,9 @@
                                     <segment title="Вчера"/>
                                     <segment title="Месяц"/>
                                 </segments>
+                                <connections>
+                                    <action selector="upperSwitcherValueChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="lcy-j0-Rvh"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuU-YB-fSY">
                                 <rect key="frame" x="16" y="89" width="28" height="28"/>

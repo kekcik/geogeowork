@@ -41,18 +41,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     fileprivate var lastLocations = [LocationClass]()
     private var isFirstEnter: Bool = true
     var lastCheckedUser: UserClass? = nil
-    //private var geocoder = CLGeocoder()
+    let geocoder = CLGeocoder()
+    var locationArray = [MKMapItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerMap()
         registerLocationManager()
         setDefaultSliderInfo()
-//        ApiManager.getLastLocations(token: ApiManager.myToken,
-//                                    user_id: ApiManager.myUserId,
-//                                    callback: {resultCode, locations in
-//        
-//        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +60,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     private func registerLocationManager(){
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
     }
@@ -133,6 +128,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             // equals disable. for test use 0.2
         })
         ShowMoreAction()
+        UpperSwitcher.sendActions(for: .valueChanged)
     }
     
     @IBAction func HideDetailMod(_ sender: Any) {
@@ -143,7 +139,71 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.buttonHideDetailMode.alpha = 0
             // equals disable. for test use 0.2
         })
+        map.removeOverlays(map.overlays)
     }
+    
+    @IBAction func upperSwitcherValueChanged(_ sender: Any) {
+        let timeBegin = "200000000000"
+        let timeEnd = "2000000000000"
+        let step = "10000"
+        map.removeOverlays(map.overlays)
+        switch UpperSwitcher.selectedSegmentIndex{
+        case 0:
+            ApiManager.getLocationHistoryOfUser(token: ApiManager.myToken,
+                                                user_id: lastCheckedUser!.id,
+                                                timeFrom: timeBegin,
+                                                timeTo: timeEnd,
+                                                step: step,
+                                                callback: {resultCode, locations in
+                                                    self.reloadRouteOnMap(locations: locations)
+            })
+        case 1:
+            ApiManager.getLocationHistoryOfUser(token: ApiManager.myToken,
+                                                user_id: lastCheckedUser!.id,
+                                                timeFrom: timeBegin,
+                                                timeTo: timeEnd,
+                                                step: step,
+                                                callback: {resultCode, locations in
+                                                    self.reloadRouteOnMap(locations: locations)
+            })
+        case 2:
+            ApiManager.getLocationHistoryOfUser(token: ApiManager.myToken,
+                                                user_id: lastCheckedUser!.id,
+                                                timeFrom: timeBegin,
+                                                timeTo: timeEnd,
+                                                step: step,
+                                                callback: {resultCode, locations in
+                                                    self.reloadRouteOnMap(locations: locations)
+            })
+        default:
+            return
+        }
+    }
+    
+    
+    func reloadRouteOnMap(locations: [LocationClass]){
+        for loc in 0 ..< (locations.count - 1){
+            let location1 = CLLocationCoordinate2D(latitude: Double(locations[loc].lat!)!, longitude: Double(locations[loc].lon!)!)
+            let location2 = CLLocationCoordinate2D(latitude: Double(locations[loc + 1].lat!)!, longitude: Double(locations[loc + 1].lon!)!)
+            let area = [location1, location2]
+            let polyline = MKPolyline(coordinates: area, count: area.count)
+            map.add(polyline)
+        }
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer  {
+        if overlay is MKPolyline{
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            if (overlay is MKPolyline) {
+                    polylineRenderer.strokeColor = UIColor.blue.withAlphaComponent(0.5)
+                polylineRenderer.lineWidth = 5
+            }
+            return polylineRenderer
+        }
+        return MKOverlayRenderer()
+    }
+
     
     func ShowMoreAction () {
         UIView.animate(withDuration: Double(0.333), animations: {
