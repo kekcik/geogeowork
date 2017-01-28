@@ -70,6 +70,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func showFriendsOnMap(){
+        map.removeAnnotations(map.annotations)
         getFollowers(callback: {users in
             for user in users{
                 self.addUserOnMap(user: user)
@@ -143,16 +144,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func upperSwitcherValueChanged(_ sender: Any) {
-        let timeBegin = "200000000000"
-        let timeEnd = "2000000000000"
+        let timeEnd = Int(ApiManager.getUnixTime())! * 1000
         let step = "10000"
         map.removeOverlays(map.overlays)
         switch UpperSwitcher.selectedSegmentIndex{
         case 0:
             ApiManager.getLocationHistoryOfUser(token: ApiManager.myToken,
                                                 user_id: lastCheckedUser!.id,
-                                                timeFrom: timeBegin,
-                                                timeTo: timeEnd,
+                                                timeFrom: String(timeEnd - (24 * 60 * 60 * 1000)),
+                                                timeTo: String(timeEnd),
                                                 step: step,
                                                 callback: {resultCode, locations in
                                                     self.reloadRouteOnMap(locations: locations)
@@ -160,8 +160,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         case 1:
             ApiManager.getLocationHistoryOfUser(token: ApiManager.myToken,
                                                 user_id: lastCheckedUser!.id,
-                                                timeFrom: timeBegin,
-                                                timeTo: timeEnd,
+                                                timeFrom: String(timeEnd - (24 * 60 * 60 * 1000 * 2)),
+                                                timeTo: String(timeEnd),
                                                 step: step,
                                                 callback: {resultCode, locations in
                                                     self.reloadRouteOnMap(locations: locations)
@@ -169,8 +169,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         case 2:
             ApiManager.getLocationHistoryOfUser(token: ApiManager.myToken,
                                                 user_id: lastCheckedUser!.id,
-                                                timeFrom: timeBegin,
-                                                timeTo: timeEnd,
+                                                timeFrom: String(timeEnd - (24 * 60 * 60 * 1000 * 30)),
+                                                timeTo: String(timeEnd),
                                                 step: step,
                                                 callback: {resultCode, locations in
                                                     self.reloadRouteOnMap(locations: locations)
@@ -293,6 +293,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     internal func mapView(_ mapView: MKMapView,
                           didSelect view: MKAnnotationView){
         if view.annotation is MKUserLocation{
+            updateSliderInfo(user: ApiManager.me)
             return
         }
         
