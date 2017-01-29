@@ -185,7 +185,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     func reloadRouteOnMap(locations: [LocationClass]){
-        for loc in 0 ..< (locations.count - 1){
+        for loc in 0 ..< (locations.count == 0 ? 0: (locations.count - 1)){
             let location1 = CLLocationCoordinate2D(latitude: Double(locations[loc].lat!)!, longitude: Double(locations[loc].lon!)!)
             let location2 = CLLocationCoordinate2D(latitude: Double(locations[loc + 1].lat!)!, longitude: Double(locations[loc + 1].lon!)!)
             let area = [location1, location2]
