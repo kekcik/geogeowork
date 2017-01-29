@@ -19,8 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="351" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NameOfUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUR-4j-ZY5">
-                        <rect key="frame" x="51" y="8" width="207" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameOfUser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUR-4j-ZY5">
+                        <rect key="frame" x="51" y="8" width="250" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="250" id="W7I-p1-PPw"/>
                             <constraint firstAttribute="height" constant="30" id="cHB-bf-Qu4"/>
@@ -49,8 +49,8 @@
                             <action selector="gotoChatButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PzX-Ca-Op4"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIV-go-mnH">
-                        <rect key="frame" x="51" y="50" width="207" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIV-go-mnH">
+                        <rect key="frame" x="51" y="50" width="250" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="250" id="G1X-Kq-Agd"/>
                             <constraint firstAttribute="height" constant="20" id="S6z-Oi-pLn"/>

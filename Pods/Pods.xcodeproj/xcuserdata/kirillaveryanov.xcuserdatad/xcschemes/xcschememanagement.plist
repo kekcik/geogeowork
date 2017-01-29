@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JSQMessagesViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +32,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>634BB98B62708050802ABF1101792AE3</key>
+		<key>5DD859B96E51EB3DA690E9EED194A0C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E93EB85AD6DBE53DDDD048F9EEDE691</key>
+		<key>63A094E56EC6F714137F4A70BD6B0080</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>76BD4592010354D6C23D6ECCA20D83A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

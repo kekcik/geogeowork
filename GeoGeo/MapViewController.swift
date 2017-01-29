@@ -47,6 +47,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MoreView.layer.cornerRadius = 8
+        MoreView.clipsToBounds = true
         registerMap()
         registerLocationManager()
         setDefaultSliderInfo()

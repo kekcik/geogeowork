@@ -146,9 +146,6 @@
 		AF56FEF71DB7F5AB00B7FE25 /* GeoGeo */ = {
 			isa = PBXGroup;
 			children = (
-				AFF282AF1DD8DA2400E9511D /* Models */,
-				AFF282AE1DD8DA1200E9511D /* ApiContollers */,
-				AFF282AD1DD8DA0100E9511D /* Helpers */,
 				8A12C4E21E315949007F2E81 /* Cells */,
 				AF56FF0C1DB7F61500B7FE25 /* ViewControllers */,
 				8AA2234E1E1BBEA70055E39A /* Initial classes */,
@@ -188,27 +185,6 @@
 				ACF8665ADC6DC43D34D4C943 /* Pods_GeoGeo.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AFF282AD1DD8DA0100E9511D /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
-		AFF282AE1DD8DA1200E9511D /* ApiContollers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ApiContollers;
-			sourceTree = "<group>";
-		};
-		AFF282AF1DD8DA2400E9511D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

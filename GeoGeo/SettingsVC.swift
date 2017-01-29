@@ -16,11 +16,30 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var changePasswordButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var okButton: UIButton!
     
     var showMore: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        changePasswordView.layer.cornerRadius = 8
+        changePasswordView.clipsToBounds = true
+//        firstLabel.layer.cornerRadius = 8
+//        firstLabel.clipsToBounds = true
+//        secondLabel.layer.cornerRadius = 8
+//        secondLabel.clipsToBounds = true
+//        changePasswordButton.layer.cornerRadius = 8
+//        changePasswordButton.clipsToBounds = true
+//        logOutButton.layer.cornerRadius = 8
+//        logOutButton.clipsToBounds = true
+//        okButton.layer.cornerRadius = 8
+//        okButton.clipsToBounds = true
+//        //667
+        changePasswordView.frame.size.height = view.frame.size.height - 60
     }
     
     @IBAction func LocationPermissionButtonPressed(_ sender: Any) {
@@ -86,13 +105,13 @@ class SettingsVC: UIViewController {
     func showMoreAction(){
         UIView.animate(withDuration: Double(0.333), animations: {
             if self.showMore{
-                self.bottomConstraint.constant = -626
+                self.bottomConstraint.constant = -1 * (self.view.frame.size.height - 110)
                 self.leftConstraint.constant = 0
                 self.rightConstraint.constant = 0
             }else{
                 self.bottomConstraint.constant = 0
-                self.leftConstraint.constant = 5
-                self.rightConstraint.constant = 5
+                self.leftConstraint.constant = 1
+                self.rightConstraint.constant = 1
             }
             self.view.layoutIfNeeded()
         })

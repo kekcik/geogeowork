@@ -13,9 +13,12 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    @IBOutlet weak var registerButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerButton.layer.cornerRadius = 8
+        registerButton.clipsToBounds = true
     }
     
     @IBAction func registerButtonPressed(_ sender: Any) {

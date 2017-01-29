@@ -11,9 +11,12 @@ import UIKit
 class LoginVC: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginButton.layer.cornerRadius = 8
+        loginButton.clipsToBounds = true
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
