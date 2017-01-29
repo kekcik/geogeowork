@@ -400,34 +400,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need in your geolocation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8n-ed-BSV">
-                                <rect key="frame" x="0.0" y="64" width="375" height="88"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.078950264079999999" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="nFu-3F-jeF"/>
+                                    <constraint firstAttribute="height" constant="60" id="nFu-3F-jeF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldD-i0-r5D">
-                                <rect key="frame" x="126" y="160" width="123" height="30"/>
+                                <rect key="frame" x="126" y="132" width="123" height="30"/>
                                 <state key="normal" title="Allow Geolocation"/>
                                 <connections>
                                     <action selector="LocationPermissionButtonPressed:" destination="0sk-IZ-AXh" eventType="touchUpInside" id="nHY-dw-67V"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We want to send you notifications" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbj-Gn-l76">
-                                <rect key="frame" x="0.0" y="198" width="375" height="63"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.078950264079999999" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="170" width="375" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="lZM-zd-jzV"/>
+                                    <constraint firstAttribute="height" constant="60" id="lZM-zd-jzV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpc-70-S81">
-                                <rect key="frame" x="125" y="269" width="125" height="30"/>
+                                <rect key="frame" x="125" y="238" width="125" height="30"/>
                                 <state key="normal" title="Allow notifications"/>
                                 <connections>
                                     <action selector="NotificationsPermissonButtonPressed:" destination="0sk-IZ-AXh" eventType="touchUpInside" id="Scx-ZK-akk"/>
@@ -463,8 +463,8 @@
                                     <action selector="logOutButtonPressed:" destination="0sk-IZ-AXh" eventType="touchUpInside" id="cpk-YG-Dp3"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8k6-6i-xm6">
-                                <rect key="frame" x="-7" y="352" width="375" height="667"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k6-6i-xm6">
+                                <rect key="frame" x="0.0" y="626" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAd-ny-WVe">
                                         <rect key="frame" x="0.0" y="542" width="375" height="75"/>

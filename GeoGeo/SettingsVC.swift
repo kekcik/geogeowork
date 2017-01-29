@@ -40,6 +40,12 @@ class SettingsVC: UIViewController {
     }
     
     @IBAction func okButtonPressed(_ sender: Any) {
+        if oldPasswordTextField.text == "" &&
+            newPasswordTextField.text == "" &&
+            repeatPasswordTextField.text == ""{
+            showMoreAction()
+            return
+        }
         if oldPasswordTextField.text == ""{
             showAlert(title: "Error", message: "Old password can't be an empty line")
         }else if newPasswordTextField.text == ""{
