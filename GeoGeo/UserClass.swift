@@ -18,6 +18,7 @@ class UserClass{
     
     init(name: String, id: String, phone: String){
         self.name = name
+        self.name = self.name.capitalized
         self.id = id
         self.phone = phone
     }
