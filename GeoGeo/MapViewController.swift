@@ -318,31 +318,30 @@ extension MapViewController: MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? UserAnnotation {
-            let identifier = "pin"
-            var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-                as? MKPinAnnotationView {
-                dequeuedView.annotation = annotation
-                if let imageView = dequeuedView.leftCalloutAccessoryView as? UIImageView{
-                    imageView.image = #imageLiteral(resourceName: "defaultUser")
-                }
-                view = dequeuedView
-            } else {
-                view = MKPinAnnotationView(annotation: annotation,
-                                           reuseIdentifier: identifier)
-                view.isEnabled = true
-                view.canShowCallout = true
+        if let annotation = annotation as? UserAnnotation{
+            let reuseIdentifier = "pin"
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
+            if view == nil {
+                view = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                view!.isEnabled = true
+                view!.canShowCallout = true
                 let btn = UIButton(type: .detailDisclosure)
-                view.rightCalloutAccessoryView = btn
-                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view!.rightCalloutAccessoryView = btn
+                view!.calloutOffset = CGPoint(x: -5, y: 5)
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
                 imageView.contentMode = UIViewContentMode.scaleAspectFill
                 imageView.image = #imageLiteral(resourceName: "defaultUser")
                 imageView.layer.masksToBounds = true
                 imageView.layer.cornerRadius = 20
-                view.leftCalloutAccessoryView = imageView as UIView
+                view!.leftCalloutAccessoryView = imageView as UIView
             }
+            else {
+                view!.annotation = annotation
+                if let imageView = view!.leftCalloutAccessoryView as? UIImageView{
+                    imageView.image = #imageLiteral(resourceName: "defaultUser")
+                }
+            }
+            view!.image = #imageLiteral(resourceName: "mapIcon")
             return view
         }
         return nil
