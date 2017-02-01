@@ -49,8 +49,8 @@
                                     <action selector="upperSwitcherValueChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="lcy-j0-Rvh"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="psx-wf-yc8">
-                                <rect key="frame" x="10" y="310" width="355" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psx-wf-yc8">
+                                <rect key="frame" x="10" y="578" width="355" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kirill" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHI-ve-rae">
                                         <rect key="frame" x="8" y="40" width="251" height="64"/>
@@ -488,21 +488,21 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M3f-Ui-p7b">
-                                        <rect key="frame" x="50" y="54" width="275" height="30"/>
+                                        <rect key="frame" x="50" y="188.5" width="275" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="0.20865426940000001" colorSpace="calibratedRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F02-5e-f3q">
-                                        <rect key="frame" x="50" y="119" width="275" height="30"/>
+                                        <rect key="frame" x="50" y="253.5" width="275" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="0.20865426940000001" colorSpace="calibratedRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2s3-11-Orl">
-                                        <rect key="frame" x="50" y="184" width="275" height="30"/>
+                                        <rect key="frame" x="50" y="318.5" width="275" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="0.20865426940000001" colorSpace="calibratedRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -516,8 +516,8 @@
                                     <constraint firstAttribute="bottom" secondItem="uAd-ny-WVe" secondAttribute="bottom" constant="50" id="5Zl-WY-qkI"/>
                                     <constraint firstAttribute="height" constant="667" id="LjV-PQ-sXw"/>
                                     <constraint firstItem="2s3-11-Orl" firstAttribute="top" secondItem="F02-5e-f3q" secondAttribute="bottom" constant="35" id="OFH-or-fVH"/>
+                                    <constraint firstItem="2s3-11-Orl" firstAttribute="centerY" secondItem="8k6-6i-xm6" secondAttribute="centerY" id="TrV-0f-eba"/>
                                     <constraint firstAttribute="trailing" secondItem="uAd-ny-WVe" secondAttribute="trailing" id="Uih-3N-8zN"/>
-                                    <constraint firstItem="M3f-Ui-p7b" firstAttribute="top" secondItem="8k6-6i-xm6" secondAttribute="top" constant="54" id="XGU-z3-s5U"/>
                                     <constraint firstItem="F02-5e-f3q" firstAttribute="leading" secondItem="8k6-6i-xm6" secondAttribute="leading" constant="50" id="bAE-C6-qJd"/>
                                     <constraint firstAttribute="trailing" secondItem="2s3-11-Orl" secondAttribute="trailing" constant="50" id="gS9-o0-pRf"/>
                                     <constraint firstItem="F02-5e-f3q" firstAttribute="top" secondItem="M3f-Ui-p7b" secondAttribute="bottom" constant="35" id="iBg-LQ-lXb"/>
@@ -560,6 +560,7 @@
                         <outlet property="changePasswordButton" destination="dNE-QQ-gzU" id="nTH-lI-c6N"/>
                         <outlet property="changePasswordView" destination="8k6-6i-xm6" id="q2U-NU-F1o"/>
                         <outlet property="firstLabel" destination="Y8n-ed-BSV" id="3xa-VI-zqb"/>
+                        <outlet property="heightConstraint" destination="LjV-PQ-sXw" id="aQD-rU-JRi"/>
                         <outlet property="leftConstraint" destination="UaL-wb-yuw" id="2LB-wB-9Oi"/>
                         <outlet property="logOutButton" destination="r4Y-gQ-qz1" id="3v3-kc-Je5"/>
                         <outlet property="newPasswordTextField" destination="F02-5e-f3q" id="ids-fQ-l2S"/>
@@ -878,7 +879,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AyJ-Ca-Y64" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="mapIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="smd-pK-aOW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="smd-pK-aOW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -898,7 +899,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JLt-Lc-Lkg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Requests" image="friendsIcon" id="xIZ-fv-4Cc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dCM-GU-1ee">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCM-GU-1ee">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
@@ -918,7 +919,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cxa-bE-iWb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chats" image="chatIcon" id="giF-nR-4Kb"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cat-93-acC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cat-93-acC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -938,7 +939,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mcs-W7-NtY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="1Bf-23-O9E"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SNY-7T-YH2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SNY-7T-YH2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>

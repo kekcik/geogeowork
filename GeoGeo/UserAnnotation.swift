@@ -13,6 +13,7 @@ import UIKit
 class UserAnnotation: NSObject, MKAnnotation{
     var user: UserClass = UserClass()
     var coordinate: CLLocationCoordinate2D
+    var lastSeen: String = ""
     var title: String? = ""
     var subtitle: String? = ""
     
@@ -20,6 +21,7 @@ class UserAnnotation: NSObject, MKAnnotation{
         self.user = user
         self.title = user.name
         self.subtitle = user.phone
-        self.coordinate = CLLocationCoordinate2D(latitude: Double(user.lat)!, longitude: Double(user.lon)!)
+        self.coordinate = CLLocationCoordinate2D(latitude: Double(user.location.lat!)!, longitude: Double(user.location.lon!)!)
+        self.lastSeen = user.location.createdAt!
     }
 }

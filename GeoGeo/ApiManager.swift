@@ -241,7 +241,7 @@ final class ApiManager{
                                         lastLocations.append(LocationClass(lat: location["lat"].stringValue,
                                                                            lon: location["lon"].stringValue,
                                                                            accuracy: location["accuracy"].stringValue,
-                                                                           createdAt: location["created_at"].stringValue))
+                                                                           createdAt: ApiManager.makeUnixTimeReadble(time: location["created_at"].intValue)))
                                     }
                                     callback(resultCode, (lastLocations.count == 0 ? nil: lastLocations[0]))
                             })

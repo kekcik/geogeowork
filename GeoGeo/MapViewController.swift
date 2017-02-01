@@ -10,12 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CustomPointAnntotation: MKPointAnnotation {
-    
-}
 
-
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
+class MapViewController: UIViewController, CLLocationManagerDelegate/*, MKMapViewDelegate*/{
     @IBOutlet weak var map: MKMapView!
     @IBOutlet var MainView: UIView!
     @IBOutlet weak var MoreView: UIView!
@@ -59,26 +55,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         showFriendsOnMap()
     }
     
-    
     private func registerLocationManager(){
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-    }
-    
-    private func registerMap(){
-        self.map.delegate = self
-        map.showsUserLocation = true
-    }
-    
-    func showFriendsOnMap(){
-        map.removeAnnotations(map.annotations)
-        getFollowers(callback: {users in
-            for user in users{
-                self.addUserOnMap(user: user)
-            }
-        })
     }
     
     func updateSliderInfo(user: UserClass){
@@ -184,29 +165,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-    func reloadRouteOnMap(locations: [LocationClass]){
-        for loc in 0 ..< (locations.count == 0 ? 0: (locations.count - 1)){
-            let location1 = CLLocationCoordinate2D(latitude: Double(locations[loc].lat!)!, longitude: Double(locations[loc].lon!)!)
-            let location2 = CLLocationCoordinate2D(latitude: Double(locations[loc + 1].lat!)!, longitude: Double(locations[loc + 1].lon!)!)
-            let area = [location1, location2]
-            let polyline = MKPolyline(coordinates: area, count: area.count)
-            map.add(polyline)
-        }
-    }
-    
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer  {
-        if overlay is MKPolyline{
-            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            if (overlay is MKPolyline) {
-                    polylineRenderer.strokeColor = UIColor.blue.withAlphaComponent(0.5)
-                polylineRenderer.lineWidth = 5
-            }
-            return polylineRenderer
-        }
-        return MKOverlayRenderer()
-    }
-
     
     func ShowMoreAction () {
         UIView.animate(withDuration: Double(0.333), animations: {
@@ -284,16 +242,116 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         })
     }
     
+    
+
+    func getFollowers(callback: @escaping (_ followers: [UserClass]) -> Void){
+        ApiManager.getFollowed(token: ApiManager.myToken,
+                                callback: {resultCode, requests in
+                                    var followers = [UserClass]()
+                                    for request in requests{
+                                        ApiManager.getUserById(token: ApiManager.myToken, id: request, callback: {
+                                            resultCode, user in
+                                            if resultCode == "0"{
+                                                ApiManager.getLastLocationOfUser(token: ApiManager.myToken,
+                                                                                 user_id: request, callback: {
+                                                                                    resultCode, location in
+                                                                                    if resultCode == "0"{
+                                                                                        if let location = location{
+                                                                                            user.location = location
+                                                                                        }
+                                                                                        followers.append(user)
+                                                                                        if followers.count == requests.count{
+                                                                                            callback(followers)
+                                                                                        }
+                                                                                    }
+                                                })
+                                            }
+                                        })
+                                        
+                                    }
+        })
+    }
+
+}
+
+
+// MARK: - Working with Map
+extension MapViewController: MKMapViewDelegate{
+    func registerMap(){
+        self.map.delegate = self
+        map.showsUserLocation = true
+    }
+    
+    func showFriendsOnMap(){
+        map.removeAnnotations(map.annotations)
+        getFollowers(callback: {users in
+            for user in users{
+                self.addUserOnMap(user: user)
+            }
+        })
+    }
+    
+    func reloadRouteOnMap(locations: [LocationClass]){
+        for loc in 0 ..< (locations.count == 0 ? 0: (locations.count - 1)){
+            let location1 = CLLocationCoordinate2D(latitude: Double(locations[loc].lat!)!, longitude: Double(locations[loc].lon!)!)
+            let location2 = CLLocationCoordinate2D(latitude: Double(locations[loc + 1].lat!)!, longitude: Double(locations[loc + 1].lon!)!)
+            let area = [location1, location2]
+            let polyline = MKPolyline(coordinates: area, count: area.count)
+            map.add(polyline)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer  {
+        if overlay is MKPolyline{
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            if (overlay is MKPolyline) {
+                polylineRenderer.strokeColor = UIColor.blue.withAlphaComponent(0.5)
+                polylineRenderer.lineWidth = 5
+            }
+            return polylineRenderer
+        }
+        return MKOverlayRenderer()
+    }
+    
     func addUserOnMap(user: UserClass){
         map.addAnnotation(UserAnnotation(user: user))
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? UserAnnotation {
+            let identifier = "pin"
+            var view: MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+                as? MKPinAnnotationView {
+                dequeuedView.annotation = annotation
+                if let imageView = dequeuedView.leftCalloutAccessoryView as? UIImageView{
+                    imageView.image = #imageLiteral(resourceName: "defaultUser")
+                }
+                view = dequeuedView
+            } else {
+                view = MKPinAnnotationView(annotation: annotation,
+                                           reuseIdentifier: identifier)
+                view.isEnabled = true
+                view.canShowCallout = true
+                let btn = UIButton(type: .detailDisclosure)
+                view.rightCalloutAccessoryView = btn
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                imageView.contentMode = UIViewContentMode.scaleAspectFill
+                imageView.image = #imageLiteral(resourceName: "defaultUser")
+                imageView.layer.masksToBounds = true
+                imageView.layer.cornerRadius = 20
+                view.leftCalloutAccessoryView = imageView as UIView
+            }
+            return view
+        }
+        return nil
+    }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        let view = MKPinAnnotationView()
-//        view.annotation = annotation
-//        return view
-//    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        ShowMoreAction()
+    }
     
     
     internal func mapView(_ mapView: MKMapView,
@@ -313,34 +371,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func setRegionAndSpan(){
         map.showAnnotations(map.annotations, animated: true)
     }
-
-    func getFollowers(callback: @escaping (_ followers: [UserClass]) -> Void){
-        ApiManager.getFollowed(token: ApiManager.myToken,
-                                callback: {resultCode, requests in
-                                    var followers = [UserClass]()
-                                    for request in requests{
-                                        ApiManager.getUserById(token: ApiManager.myToken, id: request, callback: {
-                                            resultCode, user in
-                                            if resultCode == "0"{
-                                                //followers.append(user)
-                                                ApiManager.getLastLocationOfUser(token: ApiManager.myToken,
-                                                                                 user_id: request, callback: {
-                                                                                    resultCode, location in
-                                                                                    if resultCode == "0"{
-                                                                                        user.lat = (location?.lat)!
-                                                                                        user.lon = (location?.lon)!
-                                                                                        followers.append(user)
-                                                                                        if followers.count == requests.count{
-                                                                                            callback(followers)
-                                                                                        }
-                                                                                    }
-                                                })
-                                            }
-                                        })
-                                        
-                                    }
-        })
-    }
-
 }
 

@@ -21,4 +21,6 @@ class LocationClass{
         self.accuracy = accuracy
         self.createdAt = createdAt
     }
+    
+    init(){}
 }
